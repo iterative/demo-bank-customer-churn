@@ -19,3 +19,12 @@ $ pipenv install
 $ # optionally, register this python kernel in Jupyter
 $ python -m ipykernel install --user --name bank-churn --display-name "Python (bank-churn)"
 ```
+
+<details>
+<summary> SSL errors? </summary>
+
+```
+pip install --trusted-host pypi.org --trusted-host files.pythonhost.org --trusted-host pypi.python.org -r requirements.txt
+```
+
+</details>
