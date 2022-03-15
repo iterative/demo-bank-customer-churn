@@ -4,7 +4,7 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-dvc = {extras = ["gdrive"], version = "*"}
+dvc = {extras = ["s3"], version = "*"}
 pandas = "*"
 scikit-learn = "*"
 lightgbm = "*"
