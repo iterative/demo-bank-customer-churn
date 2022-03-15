@@ -5,8 +5,12 @@ name = "pypi"
 
 [packages]
 dvc = {extras = ["gdrive"], version = "*"}
+pandas = "*"
+scikit-learn = "*"
+lightgbm = "*"
 
 [dev-packages]
+ipykernel = "*"
 
 [requires]
 python_version = "3"
