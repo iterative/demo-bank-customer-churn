@@ -1,0 +1,4 @@
+[core]
+    remote = s3_remote
+['remote "s3_remote"']
+    url = s3://alexkim-iterative-bucket/bank-churn-data/
