@@ -29,7 +29,7 @@ stages:
       - base
       - train
     outs:
-      - ${train.models_dir}
+      - ${train.models_dir}/${train.model_fname}
   eval:
     cmd: python stages/eval.py --config=params.yaml
     deps:

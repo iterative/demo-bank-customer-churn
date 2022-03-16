@@ -1,0 +1,146 @@
+schema: '2.0'
+stages:
+  check_packages:
+    cmd: python stages/check_packages.py --config=params.yaml
+    outs:
+    - path: pkg_list.txt
+      md5: dad0467a7cf4fbff144b72bcc9042384
+      size: 2349
+  data_split:
+    cmd: python stages/data_split.py --config=params.yaml
+    deps:
+    - path: data/Churn_Modelling.csv
+      md5: 4a1b016473c8c101868b5393a2ea90fd
+      size: 483368
+    - path: pkg_list.txt
+      md5: dad0467a7cf4fbff144b72bcc9042384
+      size: 2349
+    - path: stages/data_split.py
+      md5: e9a734ae2cd36a2d410c24ce375f3c40
+      size: 1592
+    params:
+      params.yaml:
+        base:
+          project: bank_customer_churn
+          data_dir: data
+          data_fname: Churn_Modelling.csv
+          cat_cols:
+          - Geography
+          - Gender
+          num_cols:
+          - CreditScore
+          - Age
+          - Tenure
+          - Balance
+          - NumOfProducts
+          - HasCrCard
+          - IsActiveMember
+          - EstimatedSalary
+          targ_col: Exited
+          pkg_list_fname: pkg_list.txt
+          random_state: 42
+        data_split:
+          test_size: 0.25
+    outs:
+    - path: data/X_test.pkl
+      md5: 6314639220ba13005fcca5571a3ab9e9
+      size: 140646
+    - path: data/X_train.pkl
+      md5: acd28c4e64e15da77a2cf652c168c032
+      size: 418969
+    - path: data/y_test.pkl
+      md5: 2869ff768a0804da7a71bcfbe8928be4
+      size: 45757
+    - path: data/y_train.pkl
+      md5: 8055395a950d27e1a84148a4c8dc1fe6
+      size: 136030
+  train:
+    cmd: python stages/train.py --config=params.yaml
+    deps:
+    - path: data/X_train.pkl
+      md5: acd28c4e64e15da77a2cf652c168c032
+      size: 418969
+    - path: data/y_train.pkl
+      md5: 8055395a950d27e1a84148a4c8dc1fe6
+      size: 136030
+    - path: pkg_list.txt
+      md5: dad0467a7cf4fbff144b72bcc9042384
+      size: 2349
+    - path: stages/train.py
+      md5: 1aad189ab7c56e4b3df665b1ec8d10f1
+      size: 1068
+    params:
+      params.yaml:
+        base:
+          project: bank_customer_churn
+          data_dir: data
+          data_fname: Churn_Modelling.csv
+          cat_cols:
+          - Geography
+          - Gender
+          num_cols:
+          - CreditScore
+          - Age
+          - Tenure
+          - Balance
+          - NumOfProducts
+          - HasCrCard
+          - IsActiveMember
+          - EstimatedSalary
+          targ_col: Exited
+          pkg_list_fname: pkg_list.txt
+          random_state: 42
+        train:
+          models_dir: models
+          model_fname: clf.joblib
+    outs:
+    - path: models/clf.joblib
+      md5: d1e881f7da2b1b545ecab2efd7cc3bb2
+      size: 340038
+  eval:
+    cmd: python stages/eval.py --config=params.yaml
+    deps:
+    - path: data/X_test.pkl
+      md5: 6314639220ba13005fcca5571a3ab9e9
+      size: 140646
+    - path: data/y_test.pkl
+      md5: 2869ff768a0804da7a71bcfbe8928be4
+      size: 45757
+    - path: pkg_list.txt
+      md5: dad0467a7cf4fbff144b72bcc9042384
+      size: 2349
+    - path: stages/eval.py
+      md5: 60c938ddd6246ac9ce14a10c6f3a3791
+      size: 1740
+    params:
+      params.yaml:
+        base:
+          project: bank_customer_churn
+          data_dir: data
+          data_fname: Churn_Modelling.csv
+          cat_cols:
+          - Geography
+          - Gender
+          num_cols:
+          - CreditScore
+          - Age
+          - Tenure
+          - Balance
+          - NumOfProducts
+          - HasCrCard
+          - IsActiveMember
+          - EstimatedSalary
+          targ_col: Exited
+          pkg_list_fname: pkg_list.txt
+          random_state: 42
+        data_split:
+          test_size: 0.25
+        eval:
+          metrics_fpath: metrics.json
+        train:
+          models_dir: models
+          model_fname: clf.joblib
+    outs:
+    - path: metrics.json
+      md5: 9cde6e750bb0af8f55f258758dcd275c
+      size: 276
