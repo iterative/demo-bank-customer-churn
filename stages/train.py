@@ -7,13 +7,19 @@ from lightgbm import LGBMClassifier
 from utils.load_params import load_params
 
 
-def train(models_dir, 
+def train(n_estimators,
+          num_leaves,
+          learning_rate,
+          models_dir, 
           model_fname, 
           data_dir,
           random_state):
     X_train = pd.read_pickle(data_dir/'X_train.pkl')
     y_train = pd.read_pickle(data_dir/'y_train.pkl')
-    clf = LGBMClassifier(random_state=random_state)
+    clf = LGBMClassifier(random_state=random_state, 
+                         n_estimators=n_estimators,
+                         num_leaves=num_leaves,
+                         learning_rate=learning_rate)
     clf.fit(X_train, y_train)
 
     models_dir.mkdir(exist_ok=True)
@@ -27,10 +33,16 @@ if __name__ == '__main__':
     params = load_params(params_path=args.config)
     data_dir = Path(params.base.data_dir)
     models_dir = Path(params.train.models_dir)
+    n_estimators = params.train.n_estimators
+    num_leaves = params.train.num_leaves
+    learning_rate = params.train.learning_rate
     model_fname = params.train.model_fname
     random_state = params.base.random_state
 
-    train(models_dir=models_dir, 
+    train(n_estimators=n_estimators,
+          num_leaves=num_leaves,
+          learning_rate=learning_rate,
+          models_dir=models_dir, 
           model_fname=model_fname, 
           data_dir=data_dir,
           random_state=random_state)

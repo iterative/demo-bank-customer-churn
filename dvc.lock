@@ -67,8 +67,8 @@ stages:
       md5: 70cf9605a62f768d99c20f95af67f059
       size: 2363
     - path: stages/train.py
-      md5: 1aad189ab7c56e4b3df665b1ec8d10f1
-      size: 1068
+      md5: 9f1ff5a912a87eb1ebc9d8f734cf4895
+      size: 1536
     params:
       params.yaml:
         base:
@@ -93,10 +93,13 @@ stages:
         train:
           models_dir: models
           model_fname: clf.joblib
+          n_estimators: 50
+          num_leaves: 20
+          learning_rate: 0.1
     outs:
     - path: models/clf.joblib
-      md5: c6e63208aa8b4b2051f365e3771b6bad
-      size: 339984
+      md5: 80fbb9a512ade91b9552d035e71d0c4d
+      size: 116045
   eval:
     cmd: python stages/eval.py --config=params.yaml
     deps:
@@ -140,7 +143,10 @@ stages:
         train:
           models_dir: models
           model_fname: clf.joblib
+          n_estimators: 50
+          num_leaves: 20
+          learning_rate: 0.1
     outs:
     - path: metrics.json
-      md5: 554434fabf1890a29e251b662f6e977c
-      size: 350
+      md5: 65f05644f19cc468c0181909f5267599
+      size: 348
