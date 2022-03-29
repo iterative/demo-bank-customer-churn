@@ -140,3 +140,7 @@ stages:
         train:
           models_dir: models
           model_fname: clf.joblib
+    outs:
+    - path: metrics.json
+      md5: 554434fabf1890a29e251b662f6e977c
+      size: 350

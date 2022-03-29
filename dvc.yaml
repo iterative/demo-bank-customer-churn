@@ -42,4 +42,6 @@ stages:
       - data_split
       - train
       - eval
-
+    metrics:
+      - metrics.json:
+          cache: false
