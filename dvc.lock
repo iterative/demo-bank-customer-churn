@@ -10,8 +10,8 @@ stages:
     cmd: python stages/data_split.py --config=params.yaml
     deps:
     - path: data/Churn_Modelling.csv
-      md5: 4a1b016473c8c101868b5393a2ea90fd
-      size: 483368
+      md5: 7321aa9a1e24a9e139f42124f736b415
+      size: 684858
     - path: pkg_list.txt
       md5: dad0467a7cf4fbff144b72bcc9042384
       size: 2349
@@ -43,26 +43,26 @@ stages:
           test_size: 0.25
     outs:
     - path: data/X_test.pkl
-      md5: 6314639220ba13005fcca5571a3ab9e9
-      size: 140646
+      md5: ecf4b572a003ba228290a810d9515b8f
+      size: 186460
     - path: data/X_train.pkl
-      md5: acd28c4e64e15da77a2cf652c168c032
-      size: 418969
+      md5: ba7dc1a05edbb9973f5293597e5d886d
+      size: 556478
     - path: data/y_test.pkl
-      md5: 2869ff768a0804da7a71bcfbe8928be4
-      size: 45757
+      md5: 7743d704b8b97cc303ceef12b9be6832
+      size: 60613
     - path: data/y_train.pkl
-      md5: 8055395a950d27e1a84148a4c8dc1fe6
-      size: 136030
+      md5: c5e58ac55c3f8077ffac66b0e9b3536a
+      size: 180622
   train:
     cmd: python stages/train.py --config=params.yaml
     deps:
     - path: data/X_train.pkl
-      md5: acd28c4e64e15da77a2cf652c168c032
-      size: 418969
+      md5: ba7dc1a05edbb9973f5293597e5d886d
+      size: 556478
     - path: data/y_train.pkl
-      md5: 8055395a950d27e1a84148a4c8dc1fe6
-      size: 136030
+      md5: c5e58ac55c3f8077ffac66b0e9b3536a
+      size: 180622
     - path: pkg_list.txt
       md5: dad0467a7cf4fbff144b72bcc9042384
       size: 2349
@@ -95,17 +95,17 @@ stages:
           model_fname: clf.joblib
     outs:
     - path: models/clf.joblib
-      md5: d1e881f7da2b1b545ecab2efd7cc3bb2
-      size: 340038
+      md5: c6e63208aa8b4b2051f365e3771b6bad
+      size: 339984
   eval:
     cmd: python stages/eval.py --config=params.yaml
     deps:
     - path: data/X_test.pkl
-      md5: 6314639220ba13005fcca5571a3ab9e9
-      size: 140646
+      md5: ecf4b572a003ba228290a810d9515b8f
+      size: 186460
     - path: data/y_test.pkl
-      md5: 2869ff768a0804da7a71bcfbe8928be4
-      size: 45757
+      md5: 7743d704b8b97cc303ceef12b9be6832
+      size: 60613
     - path: pkg_list.txt
       md5: dad0467a7cf4fbff144b72bcc9042384
       size: 2349
@@ -142,5 +142,5 @@ stages:
           model_fname: clf.joblib
     outs:
     - path: metrics.json
-      md5: 9cde6e750bb0af8f55f258758dcd275c
-      size: 276
+      md5: 554434fabf1890a29e251b662f6e977c
+      size: 350
