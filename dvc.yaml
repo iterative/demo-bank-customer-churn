@@ -37,6 +37,7 @@ stages:
       - ${base.pkg_list_fname}
       - data/X_test.pkl
       - data/y_test.pkl
+      - ${train.models_dir}/${train.model_fname}
     params:
       - base
       - data_split
