@@ -129,5 +129,3 @@ dmypy.json
 .pyre/
 .DS_store
 Pipfile.lock
-/data
-/models
