@@ -42,6 +42,4 @@ stages:
       - data_split
       - train
       - eval
-    outs:
-      - ${eval.metrics_fpath}
 

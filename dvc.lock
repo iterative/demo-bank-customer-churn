@@ -4,8 +4,8 @@ stages:
     cmd: python stages/check_packages.py --config=params.yaml
     outs:
     - path: pkg_list.txt
-      md5: dad0467a7cf4fbff144b72bcc9042384
-      size: 2349
+      md5: 70cf9605a62f768d99c20f95af67f059
+      size: 2363
   data_split:
     cmd: python stages/data_split.py --config=params.yaml
     deps:
@@ -13,8 +13,8 @@ stages:
       md5: 7321aa9a1e24a9e139f42124f736b415
       size: 684858
     - path: pkg_list.txt
-      md5: dad0467a7cf4fbff144b72bcc9042384
-      size: 2349
+      md5: 70cf9605a62f768d99c20f95af67f059
+      size: 2363
     - path: stages/data_split.py
       md5: e9a734ae2cd36a2d410c24ce375f3c40
       size: 1592
@@ -64,8 +64,8 @@ stages:
       md5: c5e58ac55c3f8077ffac66b0e9b3536a
       size: 180622
     - path: pkg_list.txt
-      md5: dad0467a7cf4fbff144b72bcc9042384
-      size: 2349
+      md5: 70cf9605a62f768d99c20f95af67f059
+      size: 2363
     - path: stages/train.py
       md5: 1aad189ab7c56e4b3df665b1ec8d10f1
       size: 1068
@@ -107,8 +107,8 @@ stages:
       md5: 7743d704b8b97cc303ceef12b9be6832
       size: 60613
     - path: pkg_list.txt
-      md5: dad0467a7cf4fbff144b72bcc9042384
-      size: 2349
+      md5: 70cf9605a62f768d99c20f95af67f059
+      size: 2363
     - path: stages/eval.py
       md5: 60c938ddd6246ac9ce14a10c6f3a3791
       size: 1740
@@ -140,7 +140,3 @@ stages:
         train:
           models_dir: models
           model_fname: clf.joblib
-    outs:
-    - path: metrics.json
-      md5: 554434fabf1890a29e251b662f6e977c
-      size: 350
