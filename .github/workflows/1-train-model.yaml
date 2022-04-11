@@ -1,0 +1,36 @@
+name: train-model
+on: [push]
+jobs:
+  train-model:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: "3.9"
+      - name: Setup Git User
+        run: cml ci
+        env:
+          REPO_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+      - name: Install pipenv
+        run: |
+          pip install pipenv
+          echo "PYTHONPATH=${GITHUB_WORKSPACE}" >> $GITHUB_ENV
+      - name: Train model
+        env:
+          REPO_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SESSION_TOKEN: ${{ secrets.AWS_SESSION_TOKEN }}
+          REPO_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+        run: |
+          pipenv install
+          pipenv run dvc pull
+          pipenv run dvc exp run
+          pipenv run dvc push
+
+          # Create CML report
+          echo "## Metrics" >> report.md
+          pipenv run dvc metrics show --md >> report.md
+          echo "## Confusion Matrix" >> report.md
+          cml publish metrics/cm.png --md >> report.md
+          cml send-comment --pr --update report.md
