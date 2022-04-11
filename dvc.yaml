@@ -44,5 +44,5 @@ stages:
       - train
       - eval
     metrics:
-      - metrics.json:
+      - ${eval.metrics_dir}/${eval.metrics_fname}:
           cache: false

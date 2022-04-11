@@ -4,7 +4,7 @@ stages:
     cmd: python stages/check_packages.py --config=params.yaml
     outs:
     - path: pkg_list.txt
-      md5: 2d7317d59b8ec45585e72aa68cb7edea
+      md5: 74d9a8d248e6842b95b035a8a99d7b96
       size: 2573
   data_split:
     cmd: python stages/data_split.py --config=params.yaml
@@ -13,7 +13,7 @@ stages:
       md5: 7321aa9a1e24a9e139f42124f736b415
       size: 684858
     - path: pkg_list.txt
-      md5: 2d7317d59b8ec45585e72aa68cb7edea
+      md5: 74d9a8d248e6842b95b035a8a99d7b96
       size: 2573
     - path: stages/data_split.py
       md5: 6b3106607eebd9aed4c292e1f68a3b52
@@ -64,7 +64,7 @@ stages:
       md5: c5e58ac55c3f8077ffac66b0e9b3536a
       size: 180622
     - path: pkg_list.txt
-      md5: 2d7317d59b8ec45585e72aa68cb7edea
+      md5: 74d9a8d248e6842b95b035a8a99d7b96
       size: 2573
     - path: stages/train.py
       md5: 5874747e8ecea0007ddfd1ef980c5b13
@@ -93,13 +93,13 @@ stages:
         train:
           models_dir: models
           model_fname: pipe.joblib
-          n_estimators: 100
-          num_leaves: 30
+          n_estimators: 200
+          num_leaves: 50
           learning_rate: 0.1
     outs:
     - path: models/pipe.joblib
-      md5: f7126c11da543b9869aa24c4fa76a8f9
-      size: 337638
+      md5: 9f1adbd18e0ddae81574742fbf20fe4b
+      size: 1088357
   eval:
     cmd: python stages/eval.py --config=params.yaml
     deps:
@@ -110,14 +110,14 @@ stages:
       md5: 7743d704b8b97cc303ceef12b9be6832
       size: 60613
     - path: models/pipe.joblib
-      md5: f7126c11da543b9869aa24c4fa76a8f9
-      size: 337638
+      md5: 9f1adbd18e0ddae81574742fbf20fe4b
+      size: 1088357
     - path: pkg_list.txt
-      md5: 2d7317d59b8ec45585e72aa68cb7edea
+      md5: 74d9a8d248e6842b95b035a8a99d7b96
       size: 2573
     - path: stages/eval.py
-      md5: 60c938ddd6246ac9ce14a10c6f3a3791
-      size: 1740
+      md5: 0662508ca37f585315438d731cd2bf9f
+      size: 2201
     params:
       params.yaml:
         base:
@@ -142,14 +142,16 @@ stages:
         data_split:
           test_size: 0.25
         eval:
-          metrics_fpath: metrics.json
+          metrics_dir: metrics
+          metrics_fname: metrics.json
+          confusion_matrix_fname: cm.png
         train:
           models_dir: models
           model_fname: pipe.joblib
-          n_estimators: 100
-          num_leaves: 30
+          n_estimators: 200
+          num_leaves: 50
           learning_rate: 0.1
     outs:
-    - path: metrics.json
-      md5: 97e53094b762f50b8f5771db643504be
+    - path: metrics/metrics.json
+      md5: fb82bc350b436c4fe759436a6e092a4d
       size: 349
