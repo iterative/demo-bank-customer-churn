@@ -8,6 +8,10 @@ dvc = {extras = ["s3"], version = "*"}
 pandas = "*"
 scikit-learn = "*"
 lightgbm = "*"
+fastapi = "*"
+uvicorn = "*"
+jsonschema = "*"
+python-box = "*"
 
 [dev-packages]
 ipykernel = "*"
