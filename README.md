@@ -23,7 +23,9 @@ $ python -m ipykernel install --user --name bank-churn --display-name "Python (b
 <details>
 <summary> SSL errors? </summary>
 
-```
+```bash
+pipenv run pip freeze > requirements.txt
+
 pip install --trusted-host pypi.org --trusted-host files.pythonhosted.org --trusted-host pypi.python.org -r requirements.txt
 
 pip config set global.trusted-host "pypi.org files.pythonhosted.org pypi.python.org"

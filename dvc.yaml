@@ -1,14 +1,14 @@
 stages:
   check_packages:
-    cmd: python stages/check_packages.py --config=params.yaml
+    cmd: pipenv run pip freeze > requirements.txt
     always_changed: true
     outs:
-      - ${base.pkg_list_fname}
+      - requirements.txt
   data_split: 
     cmd: python stages/data_split.py --config=params.yaml
     deps:
       - stages/data_split.py
-      - ${base.pkg_list_fname}
+      - requirements.txt
       - ${base.data_dir}/${base.data_fname}
     params:
       - base
@@ -22,7 +22,7 @@ stages:
     cmd: python stages/train.py --config=params.yaml
     deps:
       - stages/train.py
-      - ${base.pkg_list_fname}
+      - requirements.txt
       - data/X_train.pkl
       - data/y_train.pkl
     params:
@@ -34,7 +34,7 @@ stages:
     cmd: python stages/eval.py --config=params.yaml
     deps:
       - stages/eval.py
-      - ${base.pkg_list_fname}
+      - requirements.txt
       - data/X_test.pkl
       - data/y_test.pkl
       - ${train.models_dir}/${train.model_fname}

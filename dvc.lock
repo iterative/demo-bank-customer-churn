@@ -1,20 +1,20 @@
 schema: '2.0'
 stages:
   check_packages:
-    cmd: python stages/check_packages.py --config=params.yaml
+    cmd: pipenv run pip freeze > requirements.txt
     outs:
-    - path: pkg_list.txt
-      md5: 74d9a8d248e6842b95b035a8a99d7b96
-      size: 2573
+    - path: requirements.txt
+      md5: 348a3d2bd2af0ffc82fdf7002dea0f1e
+      size: 2528
   data_split:
     cmd: python stages/data_split.py --config=params.yaml
     deps:
     - path: data/Churn_Modelling.csv
       md5: 7321aa9a1e24a9e139f42124f736b415
       size: 684858
-    - path: pkg_list.txt
-      md5: 74d9a8d248e6842b95b035a8a99d7b96
-      size: 2573
+    - path: requirements.txt
+      md5: 348a3d2bd2af0ffc82fdf7002dea0f1e
+      size: 2528
     - path: stages/data_split.py
       md5: 6b3106607eebd9aed4c292e1f68a3b52
       size: 1512
@@ -37,7 +37,6 @@ stages:
           - IsActiveMember
           - EstimatedSalary
           targ_col: Exited
-          pkg_list_fname: pkg_list.txt
           random_state: 42
         data_split:
           test_size: 0.25
@@ -63,9 +62,9 @@ stages:
     - path: data/y_train.pkl
       md5: c5e58ac55c3f8077ffac66b0e9b3536a
       size: 180622
-    - path: pkg_list.txt
-      md5: 74d9a8d248e6842b95b035a8a99d7b96
-      size: 2573
+    - path: requirements.txt
+      md5: 348a3d2bd2af0ffc82fdf7002dea0f1e
+      size: 2528
     - path: stages/train.py
       md5: 5874747e8ecea0007ddfd1ef980c5b13
       size: 2399
@@ -88,7 +87,6 @@ stages:
           - IsActiveMember
           - EstimatedSalary
           targ_col: Exited
-          pkg_list_fname: pkg_list.txt
           random_state: 42
         train:
           models_dir: models
@@ -98,7 +96,7 @@ stages:
           learning_rate: 0.1
     outs:
     - path: models/pipe.joblib
-      md5: 9f1adbd18e0ddae81574742fbf20fe4b
+      md5: cc0088c1b22eddb2b41d810693a86e57
       size: 1088357
   eval:
     cmd: python stages/eval.py --config=params.yaml
@@ -110,11 +108,11 @@ stages:
       md5: 7743d704b8b97cc303ceef12b9be6832
       size: 60613
     - path: models/pipe.joblib
-      md5: 9f1adbd18e0ddae81574742fbf20fe4b
+      md5: cc0088c1b22eddb2b41d810693a86e57
       size: 1088357
-    - path: pkg_list.txt
-      md5: 74d9a8d248e6842b95b035a8a99d7b96
-      size: 2573
+    - path: requirements.txt
+      md5: 348a3d2bd2af0ffc82fdf7002dea0f1e
+      size: 2528
     - path: stages/eval.py
       md5: 0662508ca37f585315438d731cd2bf9f
       size: 2201
@@ -137,7 +135,6 @@ stages:
           - IsActiveMember
           - EstimatedSalary
           targ_col: Exited
-          pkg_list_fname: pkg_list.txt
           random_state: 42
         data_split:
           test_size: 0.25

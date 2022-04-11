@@ -7,7 +7,6 @@ base:
              'Balance', 'NumOfProducts', 'HasCrCard',
              'IsActiveMember', 'EstimatedSalary']
   targ_col: 'Exited'
-  pkg_list_fname: pkg_list.txt
   random_state: 42
 
 data_split:
