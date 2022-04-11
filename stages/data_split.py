@@ -15,8 +15,6 @@ def data_split(data_dir,
                random_state):
     df = pd.read_csv(data_dir/data_fname)
     X, y = df[cat_cols + num_cols], df[targ_col]
-    for cat_col in cat_cols:
-        X[cat_col] = X[cat_col].astype("category")
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=test_size, random_state=random_state)
     X_train.to_pickle(data_dir/'X_train.pkl')
     X_test.to_pickle(data_dir/'X_test.pkl')

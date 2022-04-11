@@ -15,9 +15,9 @@ data_split:
 
 train:
   models_dir: models
-  model_fname: clf.joblib
-  n_estimators: 50
-  num_leaves: 20
+  model_fname: pipe.joblib
+  n_estimators: 100
+  num_leaves: 30
   learning_rate: 0.1
 
 eval:
