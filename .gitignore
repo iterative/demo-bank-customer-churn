@@ -128,5 +128,4 @@ dmypy.json
 # Pyre type checker
 .pyre/
 .DS_store
-Pipfile.lock
-/pkg_list.txt
+/requirements.txt
