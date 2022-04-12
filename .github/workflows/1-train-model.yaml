@@ -4,12 +4,21 @@ jobs:
   train-model:
     runs-on: ubuntu-latest
     environment: cloud
+    permissions:
+      contents: read
+      id-token: write
     steps:
       - uses: actions/checkout@v2
       - uses: iterative/setup-cml@v1
       - uses: actions/setup-python@v2
         with:
           python-version: "3.9"
+      # This block is using Iterative Sandbox AWS User
+      # Comment it out if using your own credentials
+      - uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-region: us-east-1
+          role-to-assume: arn:aws:iam::342840881361:role/SandboxUser
       - name: Setup Git User
         run: cml ci
         env:
@@ -18,12 +27,6 @@ jobs:
         run: |
           pip install pipenv
           echo "PYTHONPATH=${GITHUB_WORKSPACE}" >> $GITHUB_ENV
-      # This block is using Iterative Sandbox AWS User
-      # Comment it out if using your own credentials
-      - uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-region: us-east-1
-          role-to-assume: arn:aws:iam::342840881361:role/SandboxUser
       - name: Train model
         env:
           REPO_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
