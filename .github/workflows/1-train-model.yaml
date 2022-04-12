@@ -40,7 +40,7 @@ jobs:
         run: |
           pipenv install
           pipenv run dvc pull
-          pipenv run dvc repro
+          pipenv run dvc exp run -v
           pipenv run dvc push
 
           cml pr *
