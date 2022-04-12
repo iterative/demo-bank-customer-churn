@@ -12,6 +12,7 @@ fastapi = "*"
 uvicorn = "*"
 jsonschema = "*"
 python-box = "*"
+matplotlib = "*"
 
 [dev-packages]
 ipykernel = "*"
