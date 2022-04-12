@@ -4,7 +4,7 @@ verify_ssl = false
 name = "pypi"
 
 [packages]
-dvc = "==2.9.0"
+dvc = {extras = ["s3"], version = "==2.9.0"}
 pandas = "*"
 scikit-learn = "*"
 lightgbm = "*"
