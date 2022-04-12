@@ -1,23 +1,23 @@
 schema: '2.0'
 stages:
   check_packages:
-    cmd: python stages/check_packages.py --config=params.yaml
+    cmd: pipenv run pip freeze > requirements.txt
     outs:
-    - path: pkg_list.txt
-      md5: 4343e94e77b8aacba575c748c69abe02
-      size: 2446
+    - path: requirements.txt
+      md5: b6da581caebba202444a5667d7372fca
+      size: 2528
   data_split:
     cmd: python stages/data_split.py --config=params.yaml
     deps:
     - path: data/Churn_Modelling.csv
       md5: 7321aa9a1e24a9e139f42124f736b415
       size: 684858
-    - path: pkg_list.txt
-      md5: 4343e94e77b8aacba575c748c69abe02
-      size: 2446
+    - path: requirements.txt
+      md5: b6da581caebba202444a5667d7372fca
+      size: 2528
     - path: stages/data_split.py
-      md5: e9a734ae2cd36a2d410c24ce375f3c40
-      size: 1592
+      md5: 6b3106607eebd9aed4c292e1f68a3b52
+      size: 1512
     params:
       params.yaml:
         base:
@@ -37,17 +37,16 @@ stages:
           - IsActiveMember
           - EstimatedSalary
           targ_col: Exited
-          pkg_list_fname: pkg_list.txt
           random_state: 42
         data_split:
           test_size: 0.25
     outs:
     - path: data/X_test.pkl
-      md5: ecf4b572a003ba228290a810d9515b8f
-      size: 186460
+      md5: ed4694a9b43123ef7fc1cc82d2324d63
+      size: 191055
     - path: data/X_train.pkl
-      md5: ba7dc1a05edbb9973f5293597e5d886d
-      size: 556478
+      md5: b67fd58d5da69337bebaaa43f9827c2b
+      size: 571084
     - path: data/y_test.pkl
       md5: 7743d704b8b97cc303ceef12b9be6832
       size: 60613
@@ -58,17 +57,17 @@ stages:
     cmd: python stages/train.py --config=params.yaml
     deps:
     - path: data/X_train.pkl
-      md5: ba7dc1a05edbb9973f5293597e5d886d
-      size: 556478
+      md5: b67fd58d5da69337bebaaa43f9827c2b
+      size: 571084
     - path: data/y_train.pkl
       md5: c5e58ac55c3f8077ffac66b0e9b3536a
       size: 180622
-    - path: pkg_list.txt
-      md5: 4343e94e77b8aacba575c748c69abe02
-      size: 2446
+    - path: requirements.txt
+      md5: b6da581caebba202444a5667d7372fca
+      size: 2528
     - path: stages/train.py
-      md5: 9f1ff5a912a87eb1ebc9d8f734cf4895
-      size: 1536
+      md5: 5874747e8ecea0007ddfd1ef980c5b13
+      size: 2399
     params:
       params.yaml:
         base:
@@ -88,36 +87,35 @@ stages:
           - IsActiveMember
           - EstimatedSalary
           targ_col: Exited
-          pkg_list_fname: pkg_list.txt
           random_state: 42
         train:
           models_dir: models
-          model_fname: clf.joblib
-          n_estimators: 50
-          num_leaves: 20
+          model_fname: pipe.joblib
+          n_estimators: 200
+          num_leaves: 50
           learning_rate: 0.1
     outs:
-    - path: models/clf.joblib
-      md5: 80fbb9a512ade91b9552d035e71d0c4d
-      size: 116045
+    - path: models/pipe.joblib
+      md5: 97f43702ff6e05d42c8c78c596e867aa
+      size: 1088357
   eval:
     cmd: python stages/eval.py --config=params.yaml
     deps:
     - path: data/X_test.pkl
-      md5: ecf4b572a003ba228290a810d9515b8f
-      size: 186460
+      md5: ed4694a9b43123ef7fc1cc82d2324d63
+      size: 191055
     - path: data/y_test.pkl
       md5: 7743d704b8b97cc303ceef12b9be6832
       size: 60613
-    - path: models/clf.joblib
-      md5: 80fbb9a512ade91b9552d035e71d0c4d
-      size: 116045
-    - path: pkg_list.txt
-      md5: 4343e94e77b8aacba575c748c69abe02
-      size: 2446
+    - path: models/pipe.joblib
+      md5: 97f43702ff6e05d42c8c78c596e867aa
+      size: 1088357
+    - path: requirements.txt
+      md5: b6da581caebba202444a5667d7372fca
+      size: 2528
     - path: stages/eval.py
-      md5: 60c938ddd6246ac9ce14a10c6f3a3791
-      size: 1740
+      md5: 0662508ca37f585315438d731cd2bf9f
+      size: 2201
     params:
       params.yaml:
         base:
@@ -137,19 +135,20 @@ stages:
           - IsActiveMember
           - EstimatedSalary
           targ_col: Exited
-          pkg_list_fname: pkg_list.txt
           random_state: 42
         data_split:
           test_size: 0.25
         eval:
-          metrics_fpath: metrics.json
+          metrics_dir: metrics
+          metrics_fname: metrics.json
+          confusion_matrix_fname: cm.png
         train:
           models_dir: models
-          model_fname: clf.joblib
-          n_estimators: 50
-          num_leaves: 20
+          model_fname: pipe.joblib
+          n_estimators: 200
+          num_leaves: 50
           learning_rate: 0.1
     outs:
-    - path: metrics.json
-      md5: 65f05644f19cc468c0181909f5267599
-      size: 348
+    - path: metrics/metrics.json
+      md5: fb82bc350b436c4fe759436a6e092a4d
+      size: 349
