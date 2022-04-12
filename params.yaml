@@ -15,7 +15,7 @@ data_split:
 train:
   models_dir: models
   model_fname: pipe.joblib
-  n_estimators: 200
+  n_estimators: 400
   num_leaves: 50
   learning_rate: 0.1
 
