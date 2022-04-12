@@ -2,20 +2,24 @@ import argparse
 import json
 from pathlib import Path
 
+import matplotlib.pyplot as plt
 import pandas as pd
 from joblib import load
-from sklearn.metrics import f1_score, roc_auc_score
+from sklearn.metrics import f1_score, plot_confusion_matrix, roc_auc_score
 from utils.load_params import load_params
 
 
 def eval(metrics_fpath,
+         cm_fpath,
          models_dir, 
          model_fname, 
          data_dir):
     X_test = pd.read_pickle(data_dir/'X_test.pkl')
     y_test = pd.read_pickle(data_dir/'y_test.pkl')
-    clf = load(models_dir/model_fname)
-    y_prob = clf.predict_proba(X_test)
+    pipe = load(models_dir/model_fname)
+    plot_confusion_matrix(pipe, X_test, y_test, normalize='true', cmap=plt.cm.Blues)  
+    plt.savefig(cm_fpath)
+    y_prob = pipe.predict_proba(X_test)
     y_pred = y_prob[:, 1] >= 0.5
     f1 = f1_score(y_test, y_pred)
     roc_auc = roc_auc_score(y_test, y_prob[:, 1])
@@ -47,12 +51,19 @@ if __name__ == '__main__':
     args = args_parser.parse_args()
     
     params = load_params(params_path=args.config)
-    metrics_fpath = Path(params.eval.metrics_fpath)
+    metrics_dir = Path(params.eval.metrics_dir)
+    metrics_dir.mkdir(exist_ok=True)
+    metrics_fname = params.eval.metrics_fname
+    confusion_matrix_fname = params.eval.confusion_matrix_fname
+    metrics_fpath = metrics_dir/metrics_fname
+    cm_fpath = metrics_dir/confusion_matrix_fname
+    
     data_dir = Path(params.base.data_dir)
     models_dir = Path(params.train.models_dir)
     model_fname = params.train.model_fname
 
     eval(metrics_fpath=metrics_fpath,
+         cm_fpath=cm_fpath,
          models_dir=models_dir, 
          model_fname=model_fname, 
          data_dir=data_dir)
