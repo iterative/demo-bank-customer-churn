@@ -1,0 +1,62 @@
+name: train-model
+on:
+  push:
+    # branches: [dev]
+jobs:
+  train-model:
+    runs-on: ubuntu-latest
+    environment: cloud
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v2
+      - uses: iterative/setup-cml@v1
+      - uses: actions/setup-python@v2
+        with:
+          python-version: "3.9"
+      # This block is using Iterative Sandbox AWS User
+      # Comment it out if using your own credentials
+      - uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-region: us-east-1
+          role-to-assume: arn:aws:iam::342840881361:role/SandboxUser
+      - name: Setup Git User
+        run: cml ci
+        env:
+          REPO_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+      - name: Install pipenv
+        run: |
+          pip install pipenv
+          echo "PYTHONPATH=${GITHUB_WORKSPACE}" >> $GITHUB_ENV
+      - name: Train model
+        env:
+          REPO_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          # Uncomment the below if using your own credentials
+          # AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          # AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        run: |
+          pipenv install
+          pipenv run dvc pull
+          pipenv run dvc repro
+          pipenv run dvc push
+      - uses: actions/upload-artifact@v3
+        with:
+          name: model_pickle
+          path: models/pipe.joblib
+  deploy-dev-api:
+    needs: train-model
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/download-artifact@master
+        with:
+          name: model_pickle
+          path: models
+      - uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "bank-churn-api-dev" 
+          heroku_email: "alexkim@iterative.ai"
+          team: "iterative-sandbox"
+          usedocker: true
