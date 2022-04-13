@@ -4,8 +4,8 @@ stages:
     cmd: pipenv run pip freeze > requirements.txt
     outs:
     - path: requirements.txt
-      md5: b6da581caebba202444a5667d7372fca
-      size: 2528
+      md5: e3621b3cbfaf4e26052473d91f8bd10f
+      size: 1733
   data_split:
     cmd: python stages/data_split.py --config=params.yaml
     deps:
@@ -13,8 +13,8 @@ stages:
       md5: 7321aa9a1e24a9e139f42124f736b415
       size: 684858
     - path: requirements.txt
-      md5: b6da581caebba202444a5667d7372fca
-      size: 2528
+      md5: e3621b3cbfaf4e26052473d91f8bd10f
+      size: 1733
     - path: stages/data_split.py
       md5: 6b3106607eebd9aed4c292e1f68a3b52
       size: 1512
@@ -63,8 +63,8 @@ stages:
       md5: c5e58ac55c3f8077ffac66b0e9b3536a
       size: 180622
     - path: requirements.txt
-      md5: b6da581caebba202444a5667d7372fca
-      size: 2528
+      md5: e3621b3cbfaf4e26052473d91f8bd10f
+      size: 1733
     - path: stages/train.py
       md5: 5874747e8ecea0007ddfd1ef980c5b13
       size: 2399
@@ -96,8 +96,8 @@ stages:
           learning_rate: 0.1
     outs:
     - path: models/pipe.joblib
-      md5: 97f43702ff6e05d42c8c78c596e867aa
-      size: 1088357
+      md5: 140494746fc8bb1b905761762c3fddee
+      size: 1088359
   eval:
     cmd: python stages/eval.py --config=params.yaml
     deps:
@@ -108,11 +108,11 @@ stages:
       md5: 7743d704b8b97cc303ceef12b9be6832
       size: 60613
     - path: models/pipe.joblib
-      md5: 97f43702ff6e05d42c8c78c596e867aa
-      size: 1088357
+      md5: 140494746fc8bb1b905761762c3fddee
+      size: 1088359
     - path: requirements.txt
-      md5: b6da581caebba202444a5667d7372fca
-      size: 2528
+      md5: e3621b3cbfaf4e26052473d91f8bd10f
+      size: 1733
     - path: stages/eval.py
       md5: 0662508ca37f585315438d731cd2bf9f
       size: 2201
