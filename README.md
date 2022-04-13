@@ -8,3 +8,25 @@ This dataset contains 10,000 records, each of it corresponds to a different bank
 
 ## Use Case
 The objective is to train a ML model that returns the probability of a customer to churn. This is a binary classification task, therefore F1-score is a good metric to evaluate the performance of this dataset as itweights recall and precision equally, and a good retrieval algorithm will maximize both precision and recall simultaneously.
+
+## Environment Setup 
+
+1. Install [pipenv](https://pypi.org/project/pipenv/)
+2. Create virtual environment
+```
+$ pipenv shell
+$ pipenv install
+$ # optionally, register this python kernel in Jupyter
+$ python -m ipykernel install --user --name bank-churn --display-name "Python (bank-churn)"
+```
+
+<details>
+<summary> SSL errors? </summary>
+
+```
+pip install --trusted-host pypi.org --trusted-host files.pythonhosted.org --trusted-host pypi.python.org -r requirements.txt
+
+pip config set global.trusted-host "pypi.org files.pythonhosted.org pypi.python.org"
+```
+
+</details>
