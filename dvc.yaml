@@ -1,0 +1,48 @@
+stages:
+  check_packages:
+    cmd: pipenv run pip freeze > requirements.txt
+    always_changed: true
+    outs:
+      - requirements.txt
+  data_split: 
+    cmd: python stages/data_split.py --config=params.yaml
+    deps:
+      - stages/data_split.py
+      - requirements.txt
+      - ${base.data_dir}/${base.data_fname}
+    params:
+      - base
+      - data_split
+    outs:
+      - data/X_train.pkl
+      - data/X_test.pkl
+      - data/y_train.pkl
+      - data/y_test.pkl
+  train:
+    cmd: python stages/train.py --config=params.yaml
+    deps:
+      - stages/train.py
+      - requirements.txt
+      - data/X_train.pkl
+      - data/y_train.pkl
+    params:
+      - base
+      - train
+    outs:
+      - ${train.models_dir}/${train.model_fname}
+  eval:
+    cmd: python stages/eval.py --config=params.yaml
+    deps:
+      - stages/eval.py
+      - requirements.txt
+      - data/X_test.pkl
+      - data/y_test.pkl
+      - ${train.models_dir}/${train.model_fname}
+    params:
+      - base
+      - data_split
+      - train
+      - eval
+    metrics:
+      - ${eval.metrics_dir}/${eval.metrics_fname}:
+          cache: false
