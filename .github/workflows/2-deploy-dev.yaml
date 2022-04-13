@@ -1,7 +1,7 @@
 name: train-model
 on:
   push:
-    branches: [dev]
+    # branches: [dev]
 jobs:
   train-model:
     runs-on: ubuntu-latest

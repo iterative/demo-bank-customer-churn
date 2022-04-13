@@ -1,7 +1,7 @@
 name: train-model
 on:
   push:
-    branches: [main]
+    # branches: [main]
 jobs:
   pull-model:
     runs-on: ubuntu-latest
@@ -44,7 +44,7 @@ jobs:
         with:
           name: model_pickle
           path: models/pipe.joblib
-  deploy-dev-api:
+  deploy-prod-api:
     needs: pull-model
     runs-on: ubuntu-latest
     steps:
