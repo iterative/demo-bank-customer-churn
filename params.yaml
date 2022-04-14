@@ -2,11 +2,10 @@ base:
   project: bank_customer_churn
   data_dir: data
   data_fname: Churn_Modelling.csv
-  cat_cols: ['Geography', 'Gender']
-  num_cols: ['CreditScore', 'Age', 'Tenure', 
-             'Balance', 'NumOfProducts', 'HasCrCard',
-             'IsActiveMember', 'EstimatedSalary']
-  targ_col: 'Exited'
+  cat_cols: [Geography, Gender]
+  num_cols: [CreditScore, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember,
+    EstimatedSalary]
+  targ_col: Exited
   random_state: 42
 
 data_split:
@@ -15,8 +14,8 @@ data_split:
 train:
   models_dir: models
   model_fname: pipe.joblib
-  n_estimators: 200
-  num_leaves: 50
+  n_estimators: 100
+  num_leaves: 20
   learning_rate: 0.1
 
 eval:
