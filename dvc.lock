@@ -91,13 +91,13 @@ stages:
         train:
           models_dir: models
           model_fname: pipe.joblib
-          n_estimators: 200
-          num_leaves: 50
+          n_estimators: 50
+          num_leaves: 10
           learning_rate: 0.1
     outs:
     - path: models/pipe.joblib
-      md5: 42da6e969bcbc663554a16a0b07ecf09
-      size: 1088357
+      md5: 6ca598d02235c872ec96d39eee68a6ee
+      size: 68627
   eval:
     cmd: python stages/eval.py --config=params.yaml
     deps:
@@ -108,8 +108,8 @@ stages:
       md5: 7743d704b8b97cc303ceef12b9be6832
       size: 60613
     - path: models/pipe.joblib
-      md5: 42da6e969bcbc663554a16a0b07ecf09
-      size: 1088357
+      md5: 6ca598d02235c872ec96d39eee68a6ee
+      size: 68627
     - path: requirements.txt
       md5: b8be263c550626d1a03d644bafbaaaf3
       size: 2512
@@ -145,10 +145,10 @@ stages:
         train:
           models_dir: models
           model_fname: pipe.joblib
-          n_estimators: 200
-          num_leaves: 50
+          n_estimators: 50
+          num_leaves: 10
           learning_rate: 0.1
     outs:
     - path: metrics/metrics.json
-      md5: fb82bc350b436c4fe759436a6e092a4d
-      size: 349
+      md5: d99c49037f30442f6f43ec368fdfc798
+      size: 333
