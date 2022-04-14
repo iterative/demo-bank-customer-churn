@@ -20,10 +20,10 @@ jobs:
           python-version: "3.9"
       # This block is using Iterative Sandbox AWS User
       # Comment it out if using your own credentials
-      # - uses: aws-actions/configure-aws-credentials@v1
-      #   with:
-      #     aws-region: us-east-1
-      #     role-to-assume: arn:aws:iam::342840881361:role/SandboxUser
+      - uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-region: us-east-1
+          role-to-assume: arn:aws:iam::342840881361:role/SandboxUser
       - name: Setup Git User
         run: cml ci
         env:
