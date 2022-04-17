@@ -45,7 +45,7 @@ jobs:
           pipenv run dvc exp run
           pipenv run dvc push
 
-          cml pr *
+          cml pr --squash *
           # Create CML report
           echo "## Metrics" >> report.md
           pipenv run dvc metrics show --md >> report.md
