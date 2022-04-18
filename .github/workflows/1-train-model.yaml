@@ -2,7 +2,7 @@ name: train-model
 on:
   push:
     # don't run on `main` and `dev` commits
-    branches-ignore: [main, dev]
+    branches-ignore: [main, dev, '*cml-pr*']
 jobs:
   train-model:
     runs-on: ubuntu-latest
