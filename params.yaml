@@ -16,7 +16,7 @@ train:
   model_fname: pipe.joblib
   n_estimators: 150
   num_leaves: 20
-  learning_rate: 0.1
+  learning_rate: 0.2
 
 eval:
   metrics_dir: metrics
