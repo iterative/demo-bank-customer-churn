@@ -1,4 +1,4 @@
 [core]
-    remote = my_remote
-['remote "my_remote"']
-    url = s3://alexkim-iterative-bucket/bank-churn-data/
+    remote = storage
+['remote "storage"']
+    url = s3://sandbox-datasets-iterative/bank-customer-churn/
