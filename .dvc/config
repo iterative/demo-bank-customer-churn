@@ -1,4 +1,4 @@
 [core]
-    remote = storage
-['remote "storage"']
-    url = s3://dvc-public/remote/bank-customer-churn/
+    remote = my_remote
+['remote "my_remote"']
+    url = s3://alexkim-iterative-bucket/bank-churn-data/
