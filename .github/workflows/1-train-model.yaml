@@ -51,4 +51,4 @@ jobs:
           pipenv run dvc metrics show --md >> report.md
           echo "## Confusion Matrix" >> report.md
           cml publish metrics/cm.png --md >> report.md
-          cml send-comment --pr --update report.md
+          cml send-comment --update report.md
