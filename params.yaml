@@ -15,7 +15,7 @@ train:
   models_dir: models
   model_fname: pipe.joblib
   n_estimators: 200
-  num_leaves: 20
+  num_leaves: 30
   learning_rate: 0.1
 
 eval:
