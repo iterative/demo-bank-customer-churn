@@ -1,7 +1,7 @@
 name: deploy-dev
 on:
   push:
-    branches: [dev]
+    # branches: [dev]
 jobs:
   rerun-pipeline:
     runs-on: ubuntu-latest
