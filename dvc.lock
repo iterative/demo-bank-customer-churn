@@ -96,7 +96,7 @@ stages:
           learning_rate: 0.1
     outs:
     - path: models/pipe.joblib
-      md5: 4512befed7272d546cb81531ed527627
+      md5: 25830cb6bb97b49cce60a96bb9af1c06
       size: 277589
   eval:
     cmd: python stages/eval.py --config=params.yaml
@@ -108,7 +108,7 @@ stages:
       md5: 7743d704b8b97cc303ceef12b9be6832
       size: 60613
     - path: models/pipe.joblib
-      md5: 4512befed7272d546cb81531ed527627
+      md5: 25830cb6bb97b49cce60a96bb9af1c06
       size: 277589
     - path: requirements.txt
       md5: b6da581caebba202444a5667d7372fca
