@@ -13,7 +13,6 @@ uvicorn = "*"
 jsonschema = "*"
 python-box = "*"
 matplotlib = "*"
-mlem = "*"
 
 [dev-packages]
 ipykernel = "*"
