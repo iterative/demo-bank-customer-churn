@@ -4,8 +4,8 @@ stages:
     cmd: pipenv run pip freeze > requirements.txt
     outs:
     - path: requirements.txt
-      md5: b6da581caebba202444a5667d7372fca
-      size: 2528
+      md5: d2f1a644353788fda48ce52b74b30f3f
+      size: 1750
   data_split:
     cmd: python stages/data_split.py --config=params.yaml
     deps:
@@ -13,8 +13,8 @@ stages:
       md5: 7321aa9a1e24a9e139f42124f736b415
       size: 684858
     - path: requirements.txt
-      md5: b6da581caebba202444a5667d7372fca
-      size: 2528
+      md5: d2f1a644353788fda48ce52b74b30f3f
+      size: 1750
     - path: stages/data_split.py
       md5: 6b3106607eebd9aed4c292e1f68a3b52
       size: 1512
@@ -63,8 +63,8 @@ stages:
       md5: c5e58ac55c3f8077ffac66b0e9b3536a
       size: 180622
     - path: requirements.txt
-      md5: b6da581caebba202444a5667d7372fca
-      size: 2528
+      md5: d2f1a644353788fda48ce52b74b30f3f
+      size: 1750
     - path: stages/train.py
       md5: 5874747e8ecea0007ddfd1ef980c5b13
       size: 2399
@@ -91,13 +91,13 @@ stages:
         train:
           models_dir: models
           model_fname: pipe.joblib
-          n_estimators: 120
+          n_estimators: 50
           num_leaves: 20
           learning_rate: 0.1
     outs:
     - path: models/pipe.joblib
-      md5: 25830cb6bb97b49cce60a96bb9af1c06
-      size: 277589
+      md5: bca5d7e49bf70a074c4778270ad10c59
+      size: 121256
   eval:
     cmd: python stages/eval.py --config=params.yaml
     deps:
@@ -108,11 +108,11 @@ stages:
       md5: 7743d704b8b97cc303ceef12b9be6832
       size: 60613
     - path: models/pipe.joblib
-      md5: 25830cb6bb97b49cce60a96bb9af1c06
-      size: 277589
+      md5: bca5d7e49bf70a074c4778270ad10c59
+      size: 121256
     - path: requirements.txt
-      md5: b6da581caebba202444a5667d7372fca
-      size: 2528
+      md5: d2f1a644353788fda48ce52b74b30f3f
+      size: 1750
     - path: stages/eval.py
       md5: 0662508ca37f585315438d731cd2bf9f
       size: 2201
@@ -145,10 +145,10 @@ stages:
         train:
           models_dir: models
           model_fname: pipe.joblib
-          n_estimators: 120
+          n_estimators: 50
           num_leaves: 20
           learning_rate: 0.1
     outs:
     - path: metrics/metrics.json
-      md5: 2be1faf6c844fbff30cc2f3075bbaf38
-      size: 350
+      md5: dc3f9ca3836783ff430d00c6e77e4bc9
+      size: 349
