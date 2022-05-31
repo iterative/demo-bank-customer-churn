@@ -60,3 +60,16 @@ You should now be able to run:
 ```bash
 $ dvc push -r local
 ```
+
+## Running DVC pipeline
+
+Set `PYTHONPATH` to the project's path:
+```bash
+$ export PYTHONPATH=$PWD
+```
+Execute DVC pipeline
+```bash
+$ dvc repro
+```
+
+
