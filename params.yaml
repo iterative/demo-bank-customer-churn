@@ -2,11 +2,10 @@ base:
   project: bank_customer_churn
   data_dir: data
   data_fname: Churn_Modelling.csv
-  cat_cols: ['Geography', 'Gender']
-  num_cols: ['CreditScore', 'Age', 'Tenure', 
-             'Balance', 'NumOfProducts', 'HasCrCard',
-             'IsActiveMember', 'EstimatedSalary']
-  targ_col: 'Exited'
+  cat_cols: [Geography, Gender]
+  num_cols: [CreditScore, Age, Tenure, Balance, NumOfProducts, HasCrCard, IsActiveMember,
+    EstimatedSalary]
+  targ_col: Exited
   random_state: 42
 
 data_split:
@@ -18,7 +17,7 @@ train:
   n_estimators: 70
   num_leaves: 10
   learning_rate: 0.1
-  max_depth: 10
+  max_depth: 50
   reg_alpha: 0.0
   reg_lambda: 0.0
 

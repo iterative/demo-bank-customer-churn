@@ -2,3 +2,5 @@
     remote = storage
 ['remote "storage"']
     url = https://remote.dvc.org/bank-customer-churn/
+['remote "s3_storage"']
+    url = s3://dvc-public/remote/bank-customer-churn/
