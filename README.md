@@ -26,6 +26,8 @@ $ source .venv/bin/activate
 $ pip install -r requirements.txt
 ```
 
+## Running in your environment
+
 This DVC project comes with a preconfigured DVC 
 [remote storage](https://dvc.org/doc/command-reference/remote) that holds raw 
 data (input), intermediate, and final results that are produced. 
@@ -47,3 +49,14 @@ Now you can start a Jupyter Notebook server and execute the notebook `notebook/T
 $ jupyter notebook
 ```
 
+If you'd like to test commands like [`dvc push`](https://man.dvc.org/push), that require write access to the remote storage, the easiest way would be to set up a "local remote" on your file system:
+
+This kind of remote is located in the local file system, but is external to the DVC project.
+```bash
+$ mkdir -p /tmp/dvc-storage
+$ dvc remote add local /tmp/dvc-storage
+```
+You should now be able to run:
+```bash
+$ dvc push -r local
+```
