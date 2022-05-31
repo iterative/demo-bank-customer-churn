@@ -1,5 +1,8 @@
 name: train-model
-on: push
+on:
+  push:
+    # don't run on `main` and `dev` commits
+    branches-ignore: [main, dev]
 jobs:
   train-model:
     runs-on: ubuntu-latest
