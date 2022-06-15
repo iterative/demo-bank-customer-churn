@@ -1,6 +1,10 @@
+import sys
+from pathlib import Path
+src_path = Path(__file__).parent.parent.resolve()
+sys.path.append(str(src_path))
+
 import argparse
 import json
-from pathlib import Path
 
 import matplotlib.pyplot as plt
 import pandas as pd

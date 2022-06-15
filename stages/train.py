@@ -1,5 +1,9 @@
-import argparse
+import sys
 from pathlib import Path
+src_path = Path(__file__).parent.parent.resolve()
+sys.path.append(str(src_path))
+
+import argparse
 
 import pandas as pd
 from joblib import dump
