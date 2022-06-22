@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha }}
       - uses: iterative/setup-cml@v1
       - uses: actions/setup-python@v2
         with:
@@ -39,10 +39,12 @@ jobs:
           pip install -r requirements.txt
           dvc pull
           dvc repro
-
+          dvc push
+          # Create a PR 
+          cml pr --squash --skip-ci .
           # Create CML report
           echo "## Metrics" >> report.md
           dvc metrics show --md >> report.md
           echo "## Confusion Matrix" >> report.md
           cml publish metrics/cm.png --md >> report.md
-          cml send-comment --update report.md
+          cml send-comment --pr --update report.md
