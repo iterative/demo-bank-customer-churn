@@ -23,14 +23,31 @@ def train(models_dir,
           **train_params):
     X_train = pd.read_pickle(data_dir/'X_train.pkl')
     y_train = pd.read_pickle(data_dir/'y_train.pkl')   
+    
+    numeric_transformer = Pipeline(
+        steps=[
+            ("imputer", SimpleImputer()),
+            ("scaler", StandardScaler())
+            ]
+        )
+    categorical_transformer = OrdinalEncoder()
 
+    preprocessor = ColumnTransformer(
+        transformers=[
+            ("num", numeric_transformer, num_cols),
+            ("cat", categorical_transformer, cat_cols),
+        ]
+    )
     clf = LGBMClassifier(random_state=random_state, 
                                  **train_params)
-
-    clf.fit(X_train, y_train)
+    pipe = Pipeline(
+        steps=[("preprocessor", preprocessor), ("classifier", clf)]
+        )
+    
+    pipe.fit(X_train, y_train)
 
     models_dir.mkdir(exist_ok=True)
-    dump(clf, models_dir/model_fname)
+    dump(pipe, models_dir/model_fname)
 
 if __name__ == '__main__':
     args_parser = argparse.ArgumentParser()

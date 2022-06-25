@@ -15,7 +15,9 @@ stages:
           project: bank_customer_churn
           data_dir: data
           data_fname: Churn_Modelling.csv
-          cat_cols: []
+          cat_cols:
+          - Geography
+          - Gender
           num_cols:
           - CreditScore
           - Age
@@ -31,11 +33,11 @@ stages:
           test_size: 0.25
     outs:
     - path: data/X_test.pkl
-      md5: 7fb8b7e58242a4e9933b960a4b0f3498
-      size: 180939
+      md5: ed4694a9b43123ef7fc1cc82d2324d63
+      size: 191055
     - path: data/X_train.pkl
-      md5: 50604ccbc4e19805ef19229536310080
-      size: 540948
+      md5: b67fd58d5da69337bebaaa43f9827c2b
+      size: 571084
     - path: data/y_test.pkl
       md5: 7743d704b8b97cc303ceef12b9be6832
       size: 60613
@@ -46,21 +48,23 @@ stages:
     cmd: python stages/train.py --config=params.yaml
     deps:
     - path: data/X_train.pkl
-      md5: 50604ccbc4e19805ef19229536310080
-      size: 540948
+      md5: b67fd58d5da69337bebaaa43f9827c2b
+      size: 571084
     - path: data/y_train.pkl
       md5: c5e58ac55c3f8077ffac66b0e9b3536a
       size: 180622
     - path: stages/train.py
-      md5: 8f39f373d3df9c869439459ca31f1d17
-      size: 1570
+      md5: 5b2c13ef7118c25e7d5731f66368c170
+      size: 2071
     params:
       params.yaml:
         base:
           project: bank_customer_churn
           data_dir: data
           data_fname: Churn_Modelling.csv
-          cat_cols: []
+          cat_cols:
+          - Geography
+          - Gender
           num_cols:
           - CreditScore
           - Age
@@ -80,20 +84,20 @@ stages:
             max_depth: 5
     outs:
     - path: models/model.joblib
-      md5: 33acef5373bd066b3e4c280498bb7703
-      size: 130704
+      md5: b10a95122b5b4882816746f324aa2ad3
+      size: 142928
   eval:
     cmd: python stages/eval.py --config=params.yaml
     deps:
     - path: data/X_test.pkl
-      md5: 7fb8b7e58242a4e9933b960a4b0f3498
-      size: 180939
+      md5: ed4694a9b43123ef7fc1cc82d2324d63
+      size: 191055
     - path: data/y_test.pkl
       md5: 7743d704b8b97cc303ceef12b9be6832
       size: 60613
     - path: models/model.joblib
-      md5: 33acef5373bd066b3e4c280498bb7703
-      size: 130704
+      md5: b10a95122b5b4882816746f324aa2ad3
+      size: 142928
     - path: stages/eval.py
       md5: dfc00664510f2edf3d6e5bd2ad32da6b
       size: 1813
@@ -103,7 +107,9 @@ stages:
           project: bank_customer_churn
           data_dir: data
           data_fname: Churn_Modelling.csv
-          cat_cols: []
+          cat_cols:
+          - Geography
+          - Gender
           num_cols:
           - CreditScore
           - Age
@@ -125,11 +131,11 @@ stages:
             max_depth: 5
     outs:
     - path: eval_plots/cm.png
-      md5: b83a0d4078ebc5b60eb436ae8c1e44e1
-      size: 13971
+      md5: 59bc66a5ae50b2809ab54c1053f82e60
+      size: 14010
     - path: eval_plots/plots/roc.json
-      md5: 075dde2dade5f15401bc4d3327a7fab0
-      size: 89627
+      md5: b03e5b5a72ff0b6bda6af8153cd82af1
+      size: 90078
     - path: metrics.json
-      md5: 758afb1d75dfb107c2d2e85b73d3c588
+      md5: d58a590afef4c98b3ba2da19c1ec2c2d
       size: 67
