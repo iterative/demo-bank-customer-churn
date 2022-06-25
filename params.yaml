@@ -2,9 +2,7 @@ base:
   project: bank_customer_churn
   data_dir: data
   data_fname: Churn_Modelling.csv
-  cat_cols:
-  - Geography
-  - Gender
+  cat_cols: []
   num_cols:
   - CreditScore
   - Age
