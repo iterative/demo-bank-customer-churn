@@ -8,8 +8,8 @@ import argparse
 
 import pandas as pd
 from joblib import dump
+from lightgbm import LGBMClassifier
 from sklearn.compose import ColumnTransformer
-from sklearn.ensemble import RandomForestClassifier
 from sklearn.impute import SimpleImputer
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OrdinalEncoder, StandardScaler
@@ -24,7 +24,7 @@ def train(models_dir,
     X_train = pd.read_pickle(data_dir/'X_train.pkl')
     y_train = pd.read_pickle(data_dir/'y_train.pkl')   
 
-    clf = RandomForestClassifier(random_state=random_state, 
+    clf = LGBMClassifier(random_state=random_state, 
                                  **train_params)
 
     clf.fit(X_train, y_train)
