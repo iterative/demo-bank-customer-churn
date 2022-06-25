@@ -80,12 +80,12 @@ stages:
           models_dir: models
           model_fname: model.joblib
           params:
-            n_estimators: 50
-            max_depth: 5
+            n_estimators: 150
+            max_depth: 20
     outs:
     - path: models/model.joblib
-      md5: b10a95122b5b4882816746f324aa2ad3
-      size: 142928
+      md5: 16dc2f5ace1ca2d0c81f5ec0acac40b8
+      size: 517739
   eval:
     cmd: python stages/eval.py --config=params.yaml
     deps:
@@ -96,8 +96,8 @@ stages:
       md5: 7743d704b8b97cc303ceef12b9be6832
       size: 60613
     - path: models/model.joblib
-      md5: b10a95122b5b4882816746f324aa2ad3
-      size: 142928
+      md5: 16dc2f5ace1ca2d0c81f5ec0acac40b8
+      size: 517739
     - path: stages/eval.py
       md5: dfc00664510f2edf3d6e5bd2ad32da6b
       size: 1813
@@ -127,15 +127,15 @@ stages:
           models_dir: models
           model_fname: model.joblib
           params:
-            n_estimators: 50
-            max_depth: 5
+            n_estimators: 150
+            max_depth: 20
     outs:
     - path: eval_plots/cm.png
-      md5: 59bc66a5ae50b2809ab54c1053f82e60
-      size: 14010
+      md5: fd2858594452bbaeab3f7339dd9647a8
+      size: 13749
     - path: eval_plots/plots/roc.json
-      md5: b03e5b5a72ff0b6bda6af8153cd82af1
-      size: 90078
+      md5: 2f25480b987f93f0c59f70c8172037a9
+      size: 72093
     - path: metrics.json
-      md5: d58a590afef4c98b3ba2da19c1ec2c2d
+      md5: 3987b98fc6157ab64751ce3d9ccd5268
       size: 67

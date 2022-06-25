@@ -2,7 +2,7 @@ base:
   project: bank_customer_churn
   data_dir: data
   data_fname: Churn_Modelling.csv
-  cat_cols: 
+  cat_cols:
   - Geography
   - Gender
   num_cols:
@@ -24,5 +24,5 @@ train:
   models_dir: models
   model_fname: model.joblib
   params:
-    n_estimators: 50
-    max_depth: 5
+    n_estimators: 150
+    max_depth: 20
