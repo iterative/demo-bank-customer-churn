@@ -52,8 +52,8 @@ stages:
       md5: c5e58ac55c3f8077ffac66b0e9b3536a
       size: 180622
     - path: stages/train.py
-      md5: 4d5305f35b6189e9031a4ccd459c3144
-      size: 1404
+      md5: cf3fd811c4938e5a1399f9791d87435d
+      size: 1380
     params:
       params.yaml:
         base:
@@ -80,8 +80,8 @@ stages:
             max_depth: 5
     outs:
     - path: models/model.joblib
-      md5: 8aa1391f6b838a222109527672b5a439
-      size: 198264
+      md5: 33acef5373bd066b3e4c280498bb7703
+      size: 130704
   eval:
     cmd: python stages/eval.py --config=params.yaml
     deps:
@@ -92,8 +92,8 @@ stages:
       md5: 7743d704b8b97cc303ceef12b9be6832
       size: 60613
     - path: models/model.joblib
-      md5: 8aa1391f6b838a222109527672b5a439
-      size: 198264
+      md5: 33acef5373bd066b3e4c280498bb7703
+      size: 130704
     - path: stages/eval.py
       md5: dfc00664510f2edf3d6e5bd2ad32da6b
       size: 1813
@@ -125,11 +125,11 @@ stages:
             max_depth: 5
     outs:
     - path: eval_plots/cm.png
-      md5: ef8433b4ec6f38e5545137c93ecbe1fb
-      size: 14193
+      md5: b83a0d4078ebc5b60eb436ae8c1e44e1
+      size: 13971
     - path: eval_plots/plots/roc.json
-      md5: 02f5323d541ae7e7a193cbb7cdb0d30f
-      size: 96904
+      md5: 075dde2dade5f15401bc4d3327a7fab0
+      size: 89627
     - path: metrics.json
-      md5: 320a766242babfb1ff0f9b80585a29c8
+      md5: 758afb1d75dfb107c2d2e85b73d3c588
       size: 67
