@@ -1,0 +1,12 @@
+dvc[s3]
+dvclive
+pandas
+scikit-learn
+lightgbm
+fastapi
+uvicorn
+jsonschema
+python-box
+matplotlib
+ipykernel
+notebook
