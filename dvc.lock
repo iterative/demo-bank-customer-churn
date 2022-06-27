@@ -133,3 +133,48 @@ stages:
     - path: metrics.json
       md5: 320a766242babfb1ff0f9b80585a29c8
       size: 67
+  run_notebook:
+    cmd: papermill TrainChurnModel.ipynb TrainChurnModel_out.ipynb
+    deps:
+    - path: data/Churn_Modelling.csv
+      md5: 73fba4fd85b6dbaf95c9d5e3836d3926
+      size: 684860
+    params:
+      params.yaml:
+        base:
+          project: bank_customer_churn
+          data_dir: data
+          data_fname: Churn_Modelling.csv
+          cat_cols: []
+          num_cols:
+          - CreditScore
+          - Age
+          - Tenure
+          - Balance
+          - NumOfProducts
+          - HasCrCard
+          - IsActiveMember
+          - EstimatedSalary
+          targ_col: Exited
+          random_state: 42
+        data_split:
+          test_size: 0.25
+        train:
+          models_dir: models
+          model_fname: model.joblib
+          params:
+            n_estimators: 50
+            max_depth: 5
+    outs:
+    - path: eval_plots/cm.png
+      md5: c5e795c165aa2cf78b72c663d0611986
+      size: 7557
+    - path: eval_plots/plots/roc.json
+      md5: 02f5323d541ae7e7a193cbb7cdb0d30f
+      size: 96904
+    - path: metrics.json
+      md5: 320a766242babfb1ff0f9b80585a29c8
+      size: 67
+    - path: models/model.joblib
+      md5: 16c5fe53934f85effa0fa1ad9fa89ab6
+      size: 198230
