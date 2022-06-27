@@ -3,6 +3,7 @@ stages:
     cmd: papermill TrainChurnModel.ipynb TrainChurnModel_out.ipynb
     deps:
       - data/Churn_Modelling.csv
+      - TrainChurnModel.ipynb
     params:
       - base
       - data_split

@@ -136,6 +136,9 @@ stages:
   run_notebook:
     cmd: papermill TrainChurnModel.ipynb TrainChurnModel_out.ipynb
     deps:
+    - path: TrainChurnModel.ipynb
+      md5: 259983e4f1ff430bc87d0650a1b145ec
+      size: 30132
     - path: data/Churn_Modelling.csv
       md5: 73fba4fd85b6dbaf95c9d5e3836d3926
       size: 684860
