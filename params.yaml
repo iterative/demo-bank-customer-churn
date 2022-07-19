@@ -7,7 +7,6 @@ base:
   - Gender
   num_cols:
   - CreditScore
-  - Age
   - Tenure
   - Balance
   - NumOfProducts
