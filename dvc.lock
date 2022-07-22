@@ -15,7 +15,9 @@ stages:
           project: bank_customer_churn
           data_dir: data
           data_fname: Churn_Modelling.csv
-          cat_cols: []
+          cat_cols:
+          - Geography
+          - Gender
           num_cols:
           - CreditScore
           - Age
@@ -27,15 +29,16 @@ stages:
           - EstimatedSalary
           targ_col: Exited
           random_state: 42
+          model_dir: .mlem/model
         data_split:
           test_size: 0.25
     outs:
     - path: data/X_test.pkl
-      md5: 7fb8b7e58242a4e9933b960a4b0f3498
-      size: 180939
+      md5: ed4694a9b43123ef7fc1cc82d2324d63
+      size: 191055
     - path: data/X_train.pkl
-      md5: 50604ccbc4e19805ef19229536310080
-      size: 540948
+      md5: b67fd58d5da69337bebaaa43f9827c2b
+      size: 571084
     - path: data/y_test.pkl
       md5: 7743d704b8b97cc303ceef12b9be6832
       size: 60613
@@ -46,21 +49,23 @@ stages:
     cmd: python stages/train.py --config=params.yaml
     deps:
     - path: data/X_train.pkl
-      md5: 50604ccbc4e19805ef19229536310080
-      size: 540948
+      md5: b67fd58d5da69337bebaaa43f9827c2b
+      size: 571084
     - path: data/y_train.pkl
       md5: c5e58ac55c3f8077ffac66b0e9b3536a
       size: 180622
     - path: stages/train.py
-      md5: 4d5305f35b6189e9031a4ccd459c3144
-      size: 1404
+      md5: bc6943a84d970ae52fc7c9968f9605bf
+      size: 2484
     params:
       params.yaml:
         base:
           project: bank_customer_churn
           data_dir: data
           data_fname: Churn_Modelling.csv
-          cat_cols: []
+          cat_cols:
+          - Geography
+          - Gender
           num_cols:
           - CreditScore
           - Age
@@ -72,38 +77,46 @@ stages:
           - EstimatedSalary
           targ_col: Exited
           random_state: 42
+          model_dir: .mlem/model
         train:
-          models_dir: models
-          model_fname: model.joblib
+          model_type: randomforest
           params:
-            n_estimators: 50
-            max_depth: 5
+            n_estimators: 100
+            max_depth: 10
     outs:
-    - path: models/model.joblib
-      md5: 8aa1391f6b838a222109527672b5a439
-      size: 198264
+    - path: .mlem/model/clf-model
+      md5: ca1031a8f6d55e4f651e923dc24d73ab
+      size: 4145903
+    - path: .mlem/model/clf-model.mlem
+      md5: fe917ad72c4c45c4529290ca350be5d0
+      size: 3448
   eval:
     cmd: python stages/eval.py --config=params.yaml
     deps:
+    - path: .mlem/model/clf-model
+      md5: ca1031a8f6d55e4f651e923dc24d73ab
+      size: 4145903
+    - path: .mlem/model/clf-model.mlem
+      md5: fe917ad72c4c45c4529290ca350be5d0
+      size: 3448
     - path: data/X_test.pkl
-      md5: 7fb8b7e58242a4e9933b960a4b0f3498
-      size: 180939
+      md5: ed4694a9b43123ef7fc1cc82d2324d63
+      size: 191055
     - path: data/y_test.pkl
       md5: 7743d704b8b97cc303ceef12b9be6832
       size: 60613
-    - path: models/model.joblib
-      md5: 8aa1391f6b838a222109527672b5a439
-      size: 198264
     - path: stages/eval.py
-      md5: dfc00664510f2edf3d6e5bd2ad32da6b
-      size: 1813
+      md5: bddf530adb8154bbc8abe2ec42811007
+      size: 2493
     params:
       params.yaml:
         base:
           project: bank_customer_churn
           data_dir: data
           data_fname: Churn_Modelling.csv
-          cat_cols: []
+          cat_cols:
+          - Geography
+          - Gender
           num_cols:
           - CreditScore
           - Age
@@ -115,21 +128,27 @@ stages:
           - EstimatedSalary
           targ_col: Exited
           random_state: 42
+          model_dir: .mlem/model
         data_split:
           test_size: 0.25
         train:
-          models_dir: models
-          model_fname: model.joblib
+          model_type: randomforest
           params:
-            n_estimators: 50
-            max_depth: 5
+            n_estimators: 100
+            max_depth: 10
     outs:
     - path: eval_plots/cm.png
-      md5: ef8433b4ec6f38e5545137c93ecbe1fb
-      size: 14193
+      md5: 1a0033869f39a333f3365ffa61a81ec1
+      size: 10416
     - path: eval_plots/plots/roc.json
-      md5: 02f5323d541ae7e7a193cbb7cdb0d30f
-      size: 96904
+      md5: 627fde1f613d762ba7785a530f3f3820
+      size: 73525
+    - path: feat_imp.csv
+      md5: 6fcd33e7c51a717f258e7d11dfe7767a
+      size: 327
     - path: metrics.json
-      md5: 320a766242babfb1ff0f9b80585a29c8
+      md5: efff450508fcb75023ef7c4d2fa7399c
       size: 67
+    - path: models/perm_imp.joblib
+      md5: 4b008725e0743fd0a7ad64735868df37
+      size: 4142124

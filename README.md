@@ -72,4 +72,39 @@ Execute DVC pipeline
 $ dvc repro
 ```
 
+## Running web server with [MLEM](https://mlem.ai/)
+
+To start up FastAPI server run:
+```bash
+$ mlem serve clf fastapi
+⏳️ Loading model from .mlem/model/clf.mlem
+Starting fastapi server...
+💅 Adding route for /predict
+💅 Adding route for /predict_proba
+💅 Adding route for /sklearn_predict
+💅 Adding route for /sklearn_predict_proba
+Checkout openapi docs at <http://0.0.0.0:8080/docs>
+```
+
+To test the API:
+```bash
+curl -X 'POST' 'http://0.0.0.0:8080/predict_proba' -H 'accept: application/json' -H 'Content-Type: application/json' -d '{
+  "data": {
+    "values": [
+      {
+        "": 0,
+        "CreditScore": 619,
+        "Age": 42,
+        "Tenure": 2,
+        "Balance": 0,
+        "NumOfProducts": 1,
+        "HasCrCard": 1,
+        "IsActiveMember": 1,
+        "EstimatedSalary": 101348.88
+      }
+    ]
+  }
+}'
+[[0.8074799482954296,0.19252005170457026]]
+```
 
