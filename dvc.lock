@@ -83,23 +83,23 @@ stages:
         train:
           model_type: lightgbm
           params:
-            n_estimators: 100
-            max_depth: 10
+            n_estimators: 150
+            max_depth: 20
     outs:
     - path: .mlem/model/lightgbm-model
-      md5: c530e789b2dbfdc0efeea42edb137f62
-      size: 347074
+      md5: ed9bb7afa489f5bda0f9a1512b923654
+      size: 516401
     - path: .mlem/model/lightgbm-model.mlem
-      md5: 45e84a88639465339677294d22e966e3
+      md5: c39040edd2e60ee986e79481b66b3b85
       size: 3526
   eval:
     cmd: python stages/eval.py --config=params.yaml
     deps:
     - path: .mlem/model/lightgbm-model
-      md5: c530e789b2dbfdc0efeea42edb137f62
-      size: 347074
+      md5: ed9bb7afa489f5bda0f9a1512b923654
+      size: 516401
     - path: .mlem/model/lightgbm-model.mlem
-      md5: 45e84a88639465339677294d22e966e3
+      md5: c39040edd2e60ee986e79481b66b3b85
       size: 3526
     - path: data/X_test.pkl
       md5: ed4694a9b43123ef7fc1cc82d2324d63
@@ -137,21 +137,21 @@ stages:
         train:
           model_type: lightgbm
           params:
-            n_estimators: 100
-            max_depth: 10
+            n_estimators: 150
+            max_depth: 20
     outs:
     - path: eval_plots/cm.png
-      md5: fb7c2da652e3b48bc2bbe2b29d062a76
-      size: 10081
+      md5: d4c24b7cda19862d0f0fd3dc61da8f5c
+      size: 10079
     - path: eval_plots/plots/roc.json
-      md5: dff0e75aece787c4652b885d968fb82f
-      size: 71495
+      md5: 2f25480b987f93f0c59f70c8172037a9
+      size: 72093
     - path: feat_imp.csv
-      md5: 35516dc52261994e9a430a72601f3c07
-      size: 330
+      md5: 1c573c380befbac7dd2a83587b388f0b
+      size: 327
     - path: metrics.json
-      md5: a5fb3333d14146ede3c7f04742dc4848
+      md5: 3987b98fc6157ab64751ce3d9ccd5268
       size: 67
     - path: models/perm_imp.joblib
-      md5: 2420a762d92426f5dd1c1d803a565149
-      size: 348460
+      md5: 5d5849d5102899e2a13cbc99dcdde2f0
+      size: 517786

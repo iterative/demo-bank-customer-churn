@@ -1,7 +1,7 @@
 artifacts:
   data:
-    hash: c530e789b2dbfdc0efeea42edb137f62
-    size: 347074
+    hash: ed9bb7afa489f5bda0f9a1512b923654
+    size: 516401
     type: dvc
     uri: lightgbm-model
 description: Customer Churn Classifier Model
@@ -166,18 +166,18 @@ requirements:
   version: 1.22.4
 - module: pandas
   version: 1.4.3
-- module: ruamel
 - module: scipy
   version: 1.8.1
+- module: ruamel
 - module: box
   version: 6.0.2
 - module: sklearn
   version: 1.1.1
+- module: toml
+  version: 0.10.2
 - package_name: libgomp1
   type: unix
 - module: lightgbm
   version: 3.3.2
-- module: toml
-  version: 0.10.2
 - module: yaml
   version: '6.0'

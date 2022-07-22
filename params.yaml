@@ -25,8 +25,8 @@ data_split:
 train:
   model_type: lightgbm
   params:
-    n_estimators: 100
-    max_depth: 10
+    n_estimators: 150
+    max_depth: 20
   
 eval:
   perm_imp_model_path: models/perm_imp.joblib
