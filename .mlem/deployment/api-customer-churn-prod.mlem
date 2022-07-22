@@ -1,0 +1,54 @@
+app_name: bank-customer-churn-mlem-prod
+env_link:
+  link_type: env
+  object_type: link
+  path: prod
+model_link:
+  link_type: model
+  object_type: link
+  path: clf-model
+object_type: deployment
+state:
+  app:
+    meta_info:
+      acm: false
+      archived_at: null
+      build_stack:
+        id: fa15409e-a5da-4998-9954-0e865cb1a19f
+        name: container
+      buildpack_provided_description: null
+      created_at: '2022-07-22T00:13:13Z'
+      git_url: https://git.heroku.com/bank-customer-churn-mlem-prod.git
+      id: 962647cc-1bfa-4c31-9457-32a909669288
+      internal_routing: null
+      joined: false
+      legacy_id: app270355465@heroku.com
+      locked: false
+      maintenance: false
+      name: bank-customer-churn-mlem-prod
+      organization:
+        id: b2d7b4ac-dd64-40f7-b03a-ceb0c4e13afb
+        name: iterative-sandbox
+      owner:
+        email: iterative-sandbox@herokumanager.com
+        id: b2d7b4ac-dd64-40f7-b03a-ceb0c4e13afb
+      region:
+        id: 59accabd-516d-4f0e-83e6-6e3757701145
+        name: us
+      released_at: '2022-07-22T00:13:14Z'
+      repo_size: null
+      slug_size: null
+      space: null
+      stack:
+        id: fa15409e-a5da-4998-9954-0e865cb1a19f
+        name: container
+      team:
+        id: b2d7b4ac-dd64-40f7-b03a-ceb0c4e13afb
+        name: iterative-sandbox
+      updated_at: '2022-07-22T00:13:13Z'
+      web_url: https://bank-customer-churn-mlem-prod.herokuapp.com/
+    name: bank-customer-churn-mlem-prod
+    web_url: https://bank-customer-churn-mlem-prod.herokuapp.com/
+  type: heroku
+team: iterative-sandbox
+type: heroku
