@@ -20,14 +20,14 @@ from sklearn.metrics import (confusion_matrix, f1_score, make_scorer,
 from utils.load_params import load_params
 
 
-def eval(data_dir, model_dir, perm_imp_model_path):
+def eval(data_dir, model_dir, model_name, perm_imp_model_path):
     eval_plots_dir = Path('eval_plots')
     eval_plots_dir.mkdir(exist_ok=True)
     live = Live("eval_plots")
     
     X_test = pd.read_pickle(data_dir/'X_test.pkl')
     y_test = pd.read_pickle(data_dir/'y_test.pkl')
-    model = load(str(model_dir/"clf-model"))
+    model = load(str(model_dir/model_name))
     y_prob = model.predict_proba(X_test).astype(float)
     y_prob = y_prob[:, 1]
     y_pred = y_prob >= 0.5
@@ -70,8 +70,9 @@ if __name__ == '__main__':
     params = load_params(params_path=args.config)
     data_dir = Path(params.base.data_dir)
     model_dir = Path(params.base.model_dir)
-    
+    model_name = params.base.model_name
     perm_imp_model_path = Path(params.eval.perm_imp_model_path)
     eval(data_dir=data_dir, 
          model_dir=model_dir,
+         model_name=model_name,
          perm_imp_model_path=perm_imp_model_path)

@@ -1,0 +1,183 @@
+artifacts:
+  data:
+    hash: c530e789b2dbfdc0efeea42edb137f62
+    size: 347074
+    type: dvc
+    uri: lightgbm-model
+description: Customer Churn Classifier Model
+model_type:
+  methods:
+    predict:
+      args:
+      - name: data
+        type_:
+          columns:
+          - ''
+          - Geography
+          - Gender
+          - CreditScore
+          - Age
+          - Tenure
+          - Balance
+          - NumOfProducts
+          - HasCrCard
+          - IsActiveMember
+          - EstimatedSalary
+          dtypes:
+          - int64
+          - object
+          - object
+          - int64
+          - int64
+          - int64
+          - float64
+          - int64
+          - int64
+          - int64
+          - float64
+          index_cols:
+          - ''
+          type: dataframe
+      name: predict
+      returns:
+        dtype: int64
+        shape:
+        - null
+        type: ndarray
+    predict_proba:
+      args:
+      - name: data
+        type_:
+          columns:
+          - ''
+          - Geography
+          - Gender
+          - CreditScore
+          - Age
+          - Tenure
+          - Balance
+          - NumOfProducts
+          - HasCrCard
+          - IsActiveMember
+          - EstimatedSalary
+          dtypes:
+          - int64
+          - object
+          - object
+          - int64
+          - int64
+          - int64
+          - float64
+          - int64
+          - int64
+          - int64
+          - float64
+          index_cols:
+          - ''
+          type: dataframe
+      name: predict_proba
+      returns:
+        dtype: float64
+        shape:
+        - null
+        - 2
+        type: ndarray
+    sklearn_predict:
+      args:
+      - name: X
+        type_:
+          columns:
+          - ''
+          - Geography
+          - Gender
+          - CreditScore
+          - Age
+          - Tenure
+          - Balance
+          - NumOfProducts
+          - HasCrCard
+          - IsActiveMember
+          - EstimatedSalary
+          dtypes:
+          - int64
+          - object
+          - object
+          - int64
+          - int64
+          - int64
+          - float64
+          - int64
+          - int64
+          - int64
+          - float64
+          index_cols:
+          - ''
+          type: dataframe
+      name: predict
+      returns:
+        dtype: int64
+        shape:
+        - null
+        type: ndarray
+      varkw: predict_params
+    sklearn_predict_proba:
+      args:
+      - name: X
+        type_:
+          columns:
+          - ''
+          - Geography
+          - Gender
+          - CreditScore
+          - Age
+          - Tenure
+          - Balance
+          - NumOfProducts
+          - HasCrCard
+          - IsActiveMember
+          - EstimatedSalary
+          dtypes:
+          - int64
+          - object
+          - object
+          - int64
+          - int64
+          - int64
+          - float64
+          - int64
+          - int64
+          - int64
+          - float64
+          index_cols:
+          - ''
+          type: dataframe
+      name: predict_proba
+      returns:
+        dtype: float64
+        shape:
+        - null
+        - 2
+        type: ndarray
+      varkw: predict_proba_params
+  type: sklearn_pipeline
+object_type: model
+requirements:
+- module: numpy
+  version: 1.22.4
+- module: pandas
+  version: 1.4.3
+- module: ruamel
+- module: scipy
+  version: 1.8.1
+- module: box
+  version: 6.0.2
+- module: sklearn
+  version: 1.1.1
+- package_name: libgomp1
+  type: unix
+- module: lightgbm
+  version: 3.3.2
+- module: toml
+  version: 0.10.2
+- module: yaml
+  version: '6.0'

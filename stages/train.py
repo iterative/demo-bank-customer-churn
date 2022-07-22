@@ -20,6 +20,7 @@ from xgboost import XGBClassifier
 
 def train(data_dir,
           model_type,
+          model_name,
           cat_cols,
           random_state,
           **train_params):
@@ -57,7 +58,7 @@ def train(data_dir,
     model.fit(X_train, y_train)
     save(
         model,
-        "clf-model",
+        model_name,
         sample_data=X_train,
         description="Customer Churn Classifier Model",
     )
@@ -74,8 +75,10 @@ if __name__ == '__main__':
     num_cols = params.base.num_cols
     model_type = params.train.model_type
     train_params = params.train.params
+    model_name = params.base.model_name
     train(data_dir=data_dir,
           model_type=model_type,
+          model_name=model_name,
           cat_cols=cat_cols,
           random_state=random_state,
           **train_params)

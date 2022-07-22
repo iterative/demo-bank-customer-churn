@@ -17,12 +17,13 @@ base:
   targ_col: Exited
   random_state: 42
   model_dir: .mlem/model
+  model_name: lightgbm-model
 
 data_split:
   test_size: 0.25
 
 train:
-  model_type: randomforest
+  model_type: lightgbm
   params:
     n_estimators: 100
     max_depth: 10
