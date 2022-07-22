@@ -81,24 +81,24 @@ stages:
         train:
           model_type: randomforest
           params:
-            n_estimators: 100
-            max_depth: 10
+            n_estimators: 150
+            max_depth: 15
     outs:
     - path: .mlem/model/clf-model
-      md5: ca1031a8f6d55e4f651e923dc24d73ab
-      size: 4145903
+      md5: 4c65eb98e1f9b9cae801f1a3f124f8ae
+      size: 18094935
     - path: .mlem/model/clf-model.mlem
-      md5: fe917ad72c4c45c4529290ca350be5d0
-      size: 3448
+      md5: 5af5ede7134f32a10d14c6bc60f35313
+      size: 3449
   eval:
     cmd: python stages/eval.py --config=params.yaml
     deps:
     - path: .mlem/model/clf-model
-      md5: ca1031a8f6d55e4f651e923dc24d73ab
-      size: 4145903
+      md5: 4c65eb98e1f9b9cae801f1a3f124f8ae
+      size: 18094935
     - path: .mlem/model/clf-model.mlem
-      md5: fe917ad72c4c45c4529290ca350be5d0
-      size: 3448
+      md5: 5af5ede7134f32a10d14c6bc60f35313
+      size: 3449
     - path: data/X_test.pkl
       md5: ed4694a9b43123ef7fc1cc82d2324d63
       size: 191055
@@ -134,21 +134,21 @@ stages:
         train:
           model_type: randomforest
           params:
-            n_estimators: 100
-            max_depth: 10
+            n_estimators: 150
+            max_depth: 15
     outs:
     - path: eval_plots/cm.png
-      md5: 1a0033869f39a333f3365ffa61a81ec1
-      size: 10416
+      md5: bf7953618bfa45143426dc3de6691063
+      size: 10060
     - path: eval_plots/plots/roc.json
-      md5: 627fde1f613d762ba7785a530f3f3820
-      size: 73525
+      md5: 94efcfeb12f968fbfc08cb1538538145
+      size: 75845
     - path: feat_imp.csv
-      md5: 6fcd33e7c51a717f258e7d11dfe7767a
-      size: 327
+      md5: 79ab49217bd50b727f5166b72b7d0ca7
+      size: 330
     - path: metrics.json
-      md5: efff450508fcb75023ef7c4d2fa7399c
-      size: 67
+      md5: f33ac6e81f575c9ff0d27b50f97b1b30
+      size: 65
     - path: models/perm_imp.joblib
-      md5: 4b008725e0743fd0a7ad64735868df37
-      size: 4142124
+      md5: ce2b364fa965297b7920f928b875c58f
+      size: 18087906

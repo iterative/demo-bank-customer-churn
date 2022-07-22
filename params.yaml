@@ -3,17 +3,17 @@ base:
   data_dir: data
   data_fname: Churn_Modelling.csv
   cat_cols:
-    - Geography
-    - Gender
+  - Geography
+  - Gender
   num_cols:
-    - CreditScore
-    - Age
-    - Tenure
-    - Balance
-    - NumOfProducts
-    - HasCrCard
-    - IsActiveMember
-    - EstimatedSalary
+  - CreditScore
+  - Age
+  - Tenure
+  - Balance
+  - NumOfProducts
+  - HasCrCard
+  - IsActiveMember
+  - EstimatedSalary
   targ_col: Exited
   random_state: 42
   model_dir: .mlem/model
@@ -24,8 +24,8 @@ data_split:
 train:
   model_type: randomforest
   params:
-    n_estimators: 100
-    max_depth: 10
-  
+    n_estimators: 150
+    max_depth: 15
+
 eval:
   perm_imp_model_path: models/perm_imp.joblib
