@@ -22,18 +22,25 @@ stages:
       - base
       - train
     outs:
-      - ${train.models_dir}/${train.model_fname}
+      - ${base.model_dir}/clf-model
+      - ${base.model_dir}/clf-model.mlem:
+          cache: false
   eval:
     cmd: python stages/eval.py --config=params.yaml
     deps:
       - stages/eval.py
       - data/X_test.pkl
       - data/y_test.pkl
-      - ${train.models_dir}/${train.model_fname}
+      - ${base.model_dir}/clf-model
+      - ${base.model_dir}/clf-model.mlem
     params:
       - base
       - data_split
       - train
+    outs:
+      - ${eval.perm_imp_model_path}
+      - feat_imp.csv:
+          cache: false
     metrics:
       - metrics.json:
           cache: false
