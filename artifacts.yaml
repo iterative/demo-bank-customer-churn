@@ -5,3 +5,9 @@ randomforest-model:
   - churn
   path: .mlem/model/clf-model
   type: model
+xgboost-model:
+  labels:
+  - classification
+  - churn
+  path: .mlem/model/xgboost-model
+  type: model
