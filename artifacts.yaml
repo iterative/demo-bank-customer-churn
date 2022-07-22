@@ -1,3 +1,9 @@
+lightgbm-model:
+  labels:
+  - classification
+  - churn
+  path: .mlem/model/lightgbm-model
+  type: model
 randomforest-model:
   description: Random forest classification model
   labels:
