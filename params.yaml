@@ -17,13 +17,13 @@ base:
   targ_col: Exited
   random_state: 42
   model_dir: .mlem/model
-  model_name: lightgbm-model
+  model_name: xgboost-model
 
 data_split:
   test_size: 0.25
 
 train:
-  model_type: lightgbm
+  model_type: xgboost
   params:
     n_estimators: 100
     max_depth: 10

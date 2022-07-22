@@ -30,7 +30,7 @@ stages:
           targ_col: Exited
           random_state: 42
           model_dir: .mlem/model
-          model_name: lightgbm-model
+          model_name: xgboost-model
         data_split:
           test_size: 0.25
     outs:
@@ -79,28 +79,28 @@ stages:
           targ_col: Exited
           random_state: 42
           model_dir: .mlem/model
-          model_name: lightgbm-model
+          model_name: xgboost-model
         train:
-          model_type: lightgbm
+          model_type: xgboost
           params:
             n_estimators: 100
             max_depth: 10
     outs:
-    - path: .mlem/model/lightgbm-model
-      md5: c530e789b2dbfdc0efeea42edb137f62
-      size: 347074
-    - path: .mlem/model/lightgbm-model.mlem
-      md5: 45e84a88639465339677294d22e966e3
-      size: 3526
+    - path: .mlem/model/xgboost-model
+      md5: f13f554b83a1214410410b0426a34e67
+      size: 750161
+    - path: .mlem/model/xgboost-model.mlem
+      md5: 36dc7c75269b2eb54f45eb3701ffab82
+      size: 3524
   eval:
     cmd: python stages/eval.py --config=params.yaml
     deps:
-    - path: .mlem/model/lightgbm-model
-      md5: c530e789b2dbfdc0efeea42edb137f62
-      size: 347074
-    - path: .mlem/model/lightgbm-model.mlem
-      md5: 45e84a88639465339677294d22e966e3
-      size: 3526
+    - path: .mlem/model/xgboost-model
+      md5: f13f554b83a1214410410b0426a34e67
+      size: 750161
+    - path: .mlem/model/xgboost-model.mlem
+      md5: 36dc7c75269b2eb54f45eb3701ffab82
+      size: 3524
     - path: data/X_test.pkl
       md5: ed4694a9b43123ef7fc1cc82d2324d63
       size: 191055
@@ -131,27 +131,27 @@ stages:
           targ_col: Exited
           random_state: 42
           model_dir: .mlem/model
-          model_name: lightgbm-model
+          model_name: xgboost-model
         data_split:
           test_size: 0.25
         train:
-          model_type: lightgbm
+          model_type: xgboost
           params:
             n_estimators: 100
             max_depth: 10
     outs:
     - path: eval_plots/cm.png
-      md5: fb7c2da652e3b48bc2bbe2b29d062a76
-      size: 10081
+      md5: 324a9d0087d29a3d3a821be81411ebe8
+      size: 10296
     - path: eval_plots/plots/roc.json
-      md5: dff0e75aece787c4652b885d968fb82f
-      size: 71495
+      md5: de481da10791422f827d2731f4874bd8
+      size: 71693
     - path: feat_imp.csv
-      md5: 35516dc52261994e9a430a72601f3c07
-      size: 330
+      md5: db7a45d8a1f7af43e95fbcf10dcec439
+      size: 331
     - path: metrics.json
-      md5: a5fb3333d14146ede3c7f04742dc4848
+      md5: 695f174a81edb9b307522c6720455416
       size: 67
     - path: models/perm_imp.joblib
-      md5: 2420a762d92426f5dd1c1d803a565149
-      size: 348460
+      md5: 028ef98b6db14aecf66d5ca2d896a5bf
+      size: 751455

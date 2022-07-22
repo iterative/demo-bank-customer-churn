@@ -22,8 +22,8 @@ stages:
       - base
       - train
     outs:
-      - ${base.model_dir}/lightgbm-model
-      - ${base.model_dir}/lightgbm-model.mlem:
+      - ${base.model_dir}/${base.model_name}
+      - ${base.model_dir}/${base.model_name}.mlem:
           cache: false
   eval:
     cmd: python stages/eval.py --config=params.yaml
@@ -31,8 +31,8 @@ stages:
       - stages/eval.py
       - data/X_test.pkl
       - data/y_test.pkl
-      - ${base.model_dir}/lightgbm-model
-      - ${base.model_dir}/lightgbm-model.mlem
+      - ${base.model_dir}/${base.model_name}
+      - ${base.model_dir}/${base.model_name}.mlem
     params:
       - base
       - data_split
