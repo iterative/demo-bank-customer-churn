@@ -1,0 +1,8 @@
+{
+    "name": "demo-bank-customer-churn ",
+    "build": {
+      "dockerfile": "Dockerfile"
+    },
+    "extensions": ["Iterative.dvc"],
+    "postCreateCommand": "pip3 install --user -r requirements.txt; python3 -m dvc pull"
+  }
