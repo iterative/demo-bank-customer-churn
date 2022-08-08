@@ -20,7 +20,7 @@ from sklearn.metrics import (confusion_matrix, f1_score, make_scorer,
 from utils.load_params import load_params
 
 
-def eval(data_dir, model_dir, perm_imp_model_path):
+def eval(data_dir, model_dir, perm_imp_model_path, random_state):
     eval_plots_dir = Path('eval_plots')
     eval_plots_dir.mkdir(exist_ok=True)
     live = Live("eval_plots")
@@ -44,7 +44,10 @@ def eval(data_dir, model_dir, perm_imp_model_path):
     clf = model.named_steps['clf']
     X_test_transformed = preprocessor.transform(X_test)
 
-    perm = PermutationImportance(clf, scoring=make_scorer(f1_score)).fit(X_test_transformed, y_test)
+    perm = PermutationImportance(clf, 
+                                 scoring=make_scorer(f1_score),
+                                 random_state=random_state)
+    perm = perm.fit(X_test_transformed, y_test)
     feat_imp = zip(X_test.columns.tolist(), perm.feature_importances_)
     df_feat_imp = pd.DataFrame(feat_imp, 
                       columns=['feature', 'importance'])
@@ -70,8 +73,9 @@ if __name__ == '__main__':
     params = load_params(params_path=args.config)
     data_dir = Path(params.base.data_dir)
     model_dir = Path(params.base.model_dir)
-    
+    random_state = params.base.random_state
     perm_imp_model_path = Path(params.eval.perm_imp_model_path)
     eval(data_dir=data_dir, 
          model_dir=model_dir,
-         perm_imp_model_path=perm_imp_model_path)
+         perm_imp_model_path=perm_imp_model_path,
+         random_state=random_state)
