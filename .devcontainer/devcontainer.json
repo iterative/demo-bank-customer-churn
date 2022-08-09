@@ -5,7 +5,8 @@
     },
     "extensions": [
 		"Iterative.dvc",
-		"mechatroner.rainbow-csv"
+		"mechatroner.rainbow-csv",
+		"ms-python.python"
 	],
     "postCreateCommand": "pip3 install --user -r requirements.txt; python3 -m dvc pull"
   }
