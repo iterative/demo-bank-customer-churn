@@ -3,6 +3,9 @@
     "build": {
       "dockerfile": "Dockerfile"
     },
-    "extensions": ["Iterative.dvc"],
+    "extensions": [
+		"Iterative.dvc",
+		"mechatroner.rainbow-csv"
+	],
     "postCreateCommand": "pip3 install --user -r requirements.txt; python3 -m dvc pull"
   }
