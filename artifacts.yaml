@@ -6,6 +6,7 @@ randomforest-model:
   path: .mlem/model/clf-model
   type: model
 xgboost-model:
+  description: Customer Churn Classifier Model
   labels:
   - classification
   - churn
