@@ -1,4 +1,5 @@
 lightgbm-model:
+  description: Customer Churn Classifier Model
   labels:
   - classification
   - churn
