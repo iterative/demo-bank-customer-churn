@@ -1,8 +1,11 @@
 name: train-model
 on:
   push:
-    branches:
-      - "exp-*"
+    paths:
+      - "data/**"
+      - "stages/**"
+      - "params.yaml"
+      - "dvc.*"
 jobs:
   train-model:
     runs-on: ubuntu-latest
