@@ -4,7 +4,6 @@ base:
   data_fname: Churn_Modelling.csv
   cat_cols:
   - Geography
-  - Gender
   num_cols:
   - CreditScore
   - Age

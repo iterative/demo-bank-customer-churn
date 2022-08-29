@@ -1,7 +1,7 @@
 artifacts:
   data:
-    hash: eb6caa5186ec03714104681abc7b58ac
-    size: 18094935
+    hash: 6cdb89703cc613f2346a847301f362f1
+    size: 16506539
     type: dvc
     uri: clf-model
 description: Customer Churn Classifier Model
@@ -14,7 +14,6 @@ model_type:
           columns:
           - ''
           - Geography
-          - Gender
           - CreditScore
           - Age
           - Tenure
@@ -25,7 +24,6 @@ model_type:
           - EstimatedSalary
           dtypes:
           - int64
-          - object
           - object
           - int64
           - int64
@@ -51,7 +49,6 @@ model_type:
           columns:
           - ''
           - Geography
-          - Gender
           - CreditScore
           - Age
           - Tenure
@@ -62,7 +59,6 @@ model_type:
           - EstimatedSalary
           dtypes:
           - int64
-          - object
           - object
           - int64
           - int64
@@ -89,7 +85,6 @@ model_type:
           columns:
           - ''
           - Geography
-          - Gender
           - CreditScore
           - Age
           - Tenure
@@ -100,7 +95,6 @@ model_type:
           - EstimatedSalary
           dtypes:
           - int64
-          - object
           - object
           - int64
           - int64
@@ -127,7 +121,6 @@ model_type:
           columns:
           - ''
           - Geography
-          - Gender
           - CreditScore
           - Age
           - Tenure
@@ -138,7 +131,6 @@ model_type:
           - EstimatedSalary
           dtypes:
           - int64
-          - object
           - object
           - int64
           - int64
@@ -167,13 +159,13 @@ requirements:
 - module: pandas
   version: 1.4.3
 - module: sklearn
-  version: 1.1.1
-- module: ruamel
+  version: 1.1.2
 - module: box
   version: 6.0.2
+- module: ruamel
 - module: scipy
   version: 1.8.1
-- module: yaml
-  version: '6.0'
 - module: toml
   version: 0.10.2
+- module: yaml
+  version: '6.0'

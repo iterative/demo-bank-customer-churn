@@ -17,7 +17,6 @@ stages:
           data_fname: Churn_Modelling.csv
           cat_cols:
           - Geography
-          - Gender
           num_cols:
           - CreditScore
           - Age
@@ -34,11 +33,11 @@ stages:
           test_size: 0.25
     outs:
     - path: data/X_test.pkl
-      md5: ed4694a9b43123ef7fc1cc82d2324d63
-      size: 191055
+      md5: fcd1b7e28f320159a0eed658ee56ba97
+      size: 186030
     - path: data/X_train.pkl
-      md5: b67fd58d5da69337bebaaa43f9827c2b
-      size: 571084
+      md5: 7caa1ff6b9fd082639f697e702dacb15
+      size: 556049
     - path: data/y_test.pkl
       md5: 7743d704b8b97cc303ceef12b9be6832
       size: 60613
@@ -49,8 +48,8 @@ stages:
     cmd: python stages/train.py --config=params.yaml
     deps:
     - path: data/X_train.pkl
-      md5: b67fd58d5da69337bebaaa43f9827c2b
-      size: 571084
+      md5: 7caa1ff6b9fd082639f697e702dacb15
+      size: 556049
     - path: data/y_train.pkl
       md5: c5e58ac55c3f8077ffac66b0e9b3536a
       size: 180622
@@ -65,7 +64,6 @@ stages:
           data_fname: Churn_Modelling.csv
           cat_cols:
           - Geography
-          - Gender
           num_cols:
           - CreditScore
           - Age
@@ -85,23 +83,23 @@ stages:
             max_depth: 15
     outs:
     - path: .mlem/model/clf-model
-      md5: eb6caa5186ec03714104681abc7b58ac
-      size: 18094935
+      md5: 6cdb89703cc613f2346a847301f362f1
+      size: 16506539
     - path: .mlem/model/clf-model.mlem
-      md5: 9dfe05a99006b4eb14c9d137f1f372b4
-      size: 3449
+      md5: ee258dddafa171cdb2224c69747823b3
+      size: 3297
   eval:
     cmd: python stages/eval.py --config=params.yaml
     deps:
     - path: .mlem/model/clf-model
-      md5: eb6caa5186ec03714104681abc7b58ac
-      size: 18094935
+      md5: 6cdb89703cc613f2346a847301f362f1
+      size: 16506539
     - path: .mlem/model/clf-model.mlem
-      md5: 9dfe05a99006b4eb14c9d137f1f372b4
-      size: 3449
+      md5: ee258dddafa171cdb2224c69747823b3
+      size: 3297
     - path: data/X_test.pkl
-      md5: ed4694a9b43123ef7fc1cc82d2324d63
-      size: 191055
+      md5: fcd1b7e28f320159a0eed658ee56ba97
+      size: 186030
     - path: data/y_test.pkl
       md5: 7743d704b8b97cc303ceef12b9be6832
       size: 60613
@@ -116,7 +114,6 @@ stages:
           data_fname: Churn_Modelling.csv
           cat_cols:
           - Geography
-          - Gender
           num_cols:
           - CreditScore
           - Age
@@ -138,17 +135,17 @@ stages:
             max_depth: 15
     outs:
     - path: eval_plots/cm.png
-      md5: bf7953618bfa45143426dc3de6691063
-      size: 10060
+      md5: f11849cd529001eeb85d4ff4b4e6c0be
+      size: 10231
     - path: eval_plots/plots/roc.json
-      md5: 94efcfeb12f968fbfc08cb1538538145
-      size: 75845
+      md5: 2a0c382d788fddb082156a4db781b707
+      size: 79220
     - path: feat_imp.csv
-      md5: afe2b71b1588b85906456cc45f42986b
-      size: 327
+      md5: cbf7ad5a2bbffe802927b560f317d913
+      size: 297
     - path: metrics.json
-      md5: f33ac6e81f575c9ff0d27b50f97b1b30
-      size: 65
+      md5: 096c20d40fcb880531a5997d423f0fe2
+      size: 67
     - path: models/perm_imp.joblib
-      md5: aa3e6e8fd1f968263cb9b9f0c950f1c8
-      size: 18087908
+      md5: 9d70de3ce43e487f6ffded0be02c2265
+      size: 16499964
