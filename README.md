@@ -21,37 +21,17 @@ Now let's install the requirements. But before we do that, we strongly recommend
  creating a virtual environment with a tool such as `virtualenv`:
 
 ```bash
-$ virtualenv -p python3 .venv
+$ python -m venv .venv
 $ source .venv/bin/activate
 $ pip install -r requirements.txt
 ```
 
 ## Running in your environment
 
-This DVC project comes with a preconfigured DVC 
-[remote storage](https://dvc.org/doc/command-reference/remote) that holds raw 
-data (input), intermediate, and final results that are produced. 
-This is a read-only HTTP remote.
-
-```bash
-$ dvc remote list
-storage https://remote.dvc.org/demo-bank-customer-churn
-```
-
-You can run dvc pull to download the data:
-```bash
-$ dvc pull
-```
-
-Now you can start a Jupyter Notebook server and execute the notebook `notebook/TrainChurnModel.ipynb` top to bottom to train a model
-
-```bash
-$ jupyter notebook
-```
-
-If you'd like to test commands like [`dvc push`](https://man.dvc.org/push), that require write access to the remote storage, the easiest way would be to set up a "local remote" on your file system:
-
+If you'd like to test commands like [`dvc push`](https://man.dvc.org/push), that require write access to the remote storage, the easiest way would be to set up a "local remote" on your file system.
 This kind of remote is located in the local file system, but is external to the DVC project.
+You'll also need to download the dataset from https://www.kaggle.com/adammaus/predicting-churn-for-bank-customers
+and place it into the `data/` directory.
 ```bash
 $ mkdir -p /tmp/dvc-storage
 $ dvc remote add local /tmp/dvc-storage
