@@ -134,11 +134,12 @@ stages:
       md5: 320a766242babfb1ff0f9b80585a29c8
       size: 67
   run_notebook:
-    cmd: papermill TrainChurnModel.ipynb TrainChurnModel_out.ipynb
+    cmd: papermill TrainChurnModel.ipynb TrainChurnModel_out.ipynb -p n_estimators
+      50 -p max_depth 5
     deps:
     - path: TrainChurnModel.ipynb
-      md5: 115003e1ec6e2c582c77ede535b0c84c
-      size: 30337
+      md5: 13a954e3de8ec1e12149823ab6795640
+      size: 28109
     - path: data/Churn_Modelling.csv
       md5: 73fba4fd85b6dbaf95c9d5e3836d3926
       size: 684860
@@ -171,7 +172,7 @@ stages:
             max_depth: 5
     outs:
     - path: eval_plots/cm.png
-      md5: c5e795c165aa2cf78b72c663d0611986
+      md5: 80d3784ce172f1e523b8af1ee65583d5
       size: 7557
     - path: eval_plots/plots/roc.json
       md5: 02f5323d541ae7e7a193cbb7cdb0d30f
@@ -180,5 +181,5 @@ stages:
       md5: 320a766242babfb1ff0f9b80585a29c8
       size: 67
     - path: models/model.joblib
-      md5: 16c5fe53934f85effa0fa1ad9fa89ab6
+      md5: 39ecae990fe06983533a373b44536d3e
       size: 198230

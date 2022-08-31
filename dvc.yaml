@@ -1,6 +1,8 @@
 stages:
   run_notebook:
-    cmd: papermill TrainChurnModel.ipynb TrainChurnModel_out.ipynb
+    cmd: papermill TrainChurnModel.ipynb TrainChurnModel_out.ipynb 
+         -p n_estimators ${train.params.n_estimators} 
+         -p max_depth ${train.params.max_depth}
     deps:
       - data/Churn_Modelling.csv
       - TrainChurnModel.ipynb
