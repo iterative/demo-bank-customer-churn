@@ -3,6 +3,7 @@ stages:
     cmd: papermill TrainChurnModel.ipynb TrainChurnModel_out.ipynb 
          -p n_estimators ${train.params.n_estimators} 
          -p max_depth ${train.params.max_depth}
+         -p model_type ${train.model_type}
     deps:
       - data/Churn_Modelling.csv
       - TrainChurnModel.ipynb

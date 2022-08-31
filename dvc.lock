@@ -135,11 +135,11 @@ stages:
       size: 67
   run_notebook:
     cmd: papermill TrainChurnModel.ipynb TrainChurnModel_out.ipynb -p n_estimators
-      50 -p max_depth 5
+      50 -p max_depth 5 -p model_type random-forest
     deps:
     - path: TrainChurnModel.ipynb
-      md5: 13a954e3de8ec1e12149823ab6795640
-      size: 28109
+      md5: 89481985d40d6bf9a0157ef5c1814ab8
+      size: 28276
     - path: data/Churn_Modelling.csv
       md5: 73fba4fd85b6dbaf95c9d5e3836d3926
       size: 684860
