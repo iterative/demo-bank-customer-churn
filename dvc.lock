@@ -138,8 +138,8 @@ stages:
       150 -p max_depth 20 -p model_type random-forest
     deps:
     - path: TrainChurnModel.ipynb
-      md5: 3d4df778a9e3d62a118eb8e40969764e
-      size: 28193
+      md5: b441943a7ad9b992bf69d52a4e6a0aeb
+      size: 6855
     - path: data/Churn_Modelling.csv
       md5: 73fba4fd85b6dbaf95c9d5e3836d3926
       size: 684860
