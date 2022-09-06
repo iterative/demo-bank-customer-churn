@@ -11,4 +11,3 @@ matplotlib
 ipykernel
 notebook
 papermill
-nbdev
