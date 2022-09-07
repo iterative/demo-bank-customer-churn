@@ -21,7 +21,7 @@ data_split:
 train:
   models_dir: models
   model_fname: model.joblib
-  model_type: random-forest
+  model_type: lightgbm
   params:
     n_estimators: 150
     max_depth: 20
