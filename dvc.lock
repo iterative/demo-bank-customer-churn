@@ -135,7 +135,7 @@ stages:
       size: 67
   run_notebook:
     cmd: papermill TrainChurnModel.ipynb TrainChurnModel_out.ipynb -p n_estimators
-      150 -p max_depth 20 -p model_type lightgbm
+      30 -p max_depth 10 -p model_type lightgbm
     deps:
     - path: TrainChurnModel.ipynb
       md5: a70e139e23507d379682378afb632ff8
@@ -168,18 +168,18 @@ stages:
           model_fname: model.joblib
           model_type: lightgbm
           params:
-            n_estimators: 150
-            max_depth: 20
+            n_estimators: 30
+            max_depth: 10
     outs:
     - path: eval_plots/cm.png
-      md5: 066dcbadfdd8bcb86ce11adc5a8aa586
-      size: 7557
+      md5: bd360d260c13b95a12bab95f575366de
+      size: 7311
     - path: eval_plots/plots/roc.json
-      md5: f9526949fccf78a0d69004b9c526c473
-      size: 77888
+      md5: 5f8d586fd5f066f738199802f5c1d5a8
+      size: 109282
     - path: metrics.json
-      md5: 66f8f0fbc2eccbed7cb1098e3019fe97
-      size: 67
+      md5: b5e2cdf5cc9e5d1e3035801543dbfa48
+      size: 66
     - path: models/model.joblib
-      md5: 1ce0250ee07784d0b5e1d144158af059
-      size: 507850
+      md5: 57dce9d16b87826a0a4b230dd1c8555f
+      size: 105631

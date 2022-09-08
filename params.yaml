@@ -23,5 +23,5 @@ train:
   model_fname: model.joblib
   model_type: lightgbm
   params:
-    n_estimators: 150
-    max_depth: 20
+    n_estimators: 30
+    max_depth: 10
