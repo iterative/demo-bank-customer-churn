@@ -6,12 +6,12 @@ https://www.kaggle.com/adammaus/predicting-churn-for-bank-customers
 ## Description
 This dataset contains 10,000 records, each of it corresponds to a different bank's user. The target is ExitedTask, a binary variable that describes whether the user decided to leave the bank. There are row and customer identifiers, four columns describing personal information about the user (surname, location, gender and age), and some other columns containing information related to the loan (such as credit score, current balance in the user's account and whether they are an active member among others).
 
-|RowNumber|CustomerId|Surname |CreditScore|Geography|...|NumOfProducts|HasCrCard|IsActiveMember|EstimatedSalary|Exited|
-|---------|----------|--------|-----------|---------|---|-------------|---------|--------------|---------------|------|
-|1        |15634602  |Hargrave|619        |France   |...|1            |1        |1             |101348.88      |1     |
-|2        |15647311  |Hill    |608        |Spain    |...|1            |0        |1             |112542.58      |0     |
-|3        |15619304  |Onio    |502        |France   |...|3            |1        |0             |113931.57      |1     |
-|4        |15701354  |Boni    |699        |France   |...|2            |0        |0             |93826.63       |0     |
+|RowNumber|CustomerId|Surname |CreditScore|Geography|...|NumOfProducts|HasCrCard|EstimatedSalary|Exited|
+|---------|----------|--------|-----------|---------|---|-------------|---------|---------------|------|
+|1        |15634602  |Hargrave|619        |France   |...|1            |1        |101348.88      |1     |
+|2        |15647311  |Hill    |608        |Spain    |...|1            |0        |112542.58      |0     |
+|3        |15619304  |Onio    |502        |France   |...|3            |1        |113931.57      |1     |
+|4        |15701354  |Boni    |699        |France   |...|2            |0        |93826.63       |0     |
 ...
 
 ## Use Case
