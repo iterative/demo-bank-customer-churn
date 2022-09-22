@@ -6,6 +6,8 @@ on:
       - "stages/**"
       - "params.yaml"
       - "dvc.*"
+    tags-ignore:
+      - '**'
 jobs:
   train-model:
     runs-on: ubuntu-latest
