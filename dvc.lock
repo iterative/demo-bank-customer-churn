@@ -54,8 +54,8 @@ stages:
       md5: c5e58ac55c3f8077ffac66b0e9b3536a
       size: 180622
     - path: stages/train.py
-      md5: bc6943a84d970ae52fc7c9968f9605bf
-      size: 2484
+      md5: 5b39947c77841799b2c970cd662dd6da
+      size: 2428
     params:
       params.yaml:
         base:
@@ -83,20 +83,20 @@ stages:
             max_depth: 15
     outs:
     - path: .mlem/model/clf-model
-      md5: 6cdb89703cc613f2346a847301f362f1
+      md5: 8751d511f81e2f91f06fd64c44484503
       size: 16506539
     - path: .mlem/model/clf-model.mlem
-      md5: ee258dddafa171cdb2224c69747823b3
-      size: 3297
+      md5: 2df3bfd89dde1629fa04d125c5bc8bf5
+      size: 3252
   eval:
     cmd: python stages/eval.py --config=params.yaml
     deps:
     - path: .mlem/model/clf-model
-      md5: 6cdb89703cc613f2346a847301f362f1
+      md5: 8751d511f81e2f91f06fd64c44484503
       size: 16506539
     - path: .mlem/model/clf-model.mlem
-      md5: ee258dddafa171cdb2224c69747823b3
-      size: 3297
+      md5: 2df3bfd89dde1629fa04d125c5bc8bf5
+      size: 3252
     - path: data/X_test.pkl
       md5: fcd1b7e28f320159a0eed658ee56ba97
       size: 186030
@@ -135,7 +135,7 @@ stages:
             max_depth: 15
     outs:
     - path: eval_plots/cm.png
-      md5: f11849cd529001eeb85d4ff4b4e6c0be
+      md5: c86fff702e890f6dbbf89adc6cfe3d3c
       size: 10231
     - path: eval_plots/plots/roc.json
       md5: 2a0c382d788fddb082156a4db781b707

@@ -58,8 +58,7 @@ def train(data_dir,
     save(
         model,
         "clf-model",
-        sample_data=X_train,
-        description="Customer Churn Classifier Model",
+        sample_data=X_train
     )
 
 if __name__ == '__main__':
