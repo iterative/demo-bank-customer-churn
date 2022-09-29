@@ -1,7 +1,7 @@
 artifacts:
   data:
-    hash: 09dcd92d00a07962d2e9e09b283ff97a
-    size: 17322587
+    hash: 2edc7d4859b7f474d1da575fab7639f3
+    size: 516139
     type: dvc
     uri: clf-model
 model_type:
@@ -157,14 +157,22 @@ requirements:
   version: 1.22.4
 - module: pandas
   version: 1.5.0
-- module: sklearn
-  version: 1.1.2
-- module: box
-  version: 6.0.1
-- module: ruamel
 - module: scipy
   version: 1.8.1
-- module: toml
-  version: 0.10.2
+- module: sklearn
+  version: 1.1.2
+- module: ruamel
+- package_name: libgomp1
+  type: unix
+- module: lightgbm
+  version: 3.3.2
+- module: box
+  version: 6.0.1
+- module: pyarrow
+  version: 9.0.0
 - module: yaml
   version: '6.0'
+- module: dateutil
+  version: 2.8.2
+- module: toml
+  version: 0.10.2

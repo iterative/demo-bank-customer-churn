@@ -77,26 +77,26 @@ stages:
           random_state: 42
           model_dir: .mlem/model
         train:
-          model_type: randomforest
+          model_type: lightgbm
           params:
             n_estimators: 150
             max_depth: 15
     outs:
     - path: .mlem/model/clf-model
-      md5: 09dcd92d00a07962d2e9e09b283ff97a
-      size: 17322587
+      md5: 2edc7d4859b7f474d1da575fab7639f3
+      size: 516139
     - path: .mlem/model/clf-model.mlem
-      md5: 1e27593b88018fbef04d9c336d8ad003
-      size: 3252
+      md5: 9ba08510117269e33c4e807e8720eea4
+      size: 3395
   eval:
     cmd: python stages/eval.py --config=params.yaml
     deps:
     - path: .mlem/model/clf-model
-      md5: 09dcd92d00a07962d2e9e09b283ff97a
-      size: 17322587
+      md5: 2edc7d4859b7f474d1da575fab7639f3
+      size: 516139
     - path: .mlem/model/clf-model.mlem
-      md5: 1e27593b88018fbef04d9c336d8ad003
-      size: 3252
+      md5: 9ba08510117269e33c4e807e8720eea4
+      size: 3395
     - path: data/X_test.pkl
       md5: 8e3bb70a52b3a62e752479d0909b523f
       size: 149028
@@ -129,23 +129,23 @@ stages:
         data_split:
           test_size: 0.2
         train:
-          model_type: randomforest
+          model_type: lightgbm
           params:
             n_estimators: 150
             max_depth: 15
     outs:
     - path: eval_plots/cm.png
-      md5: e94f058a9f5f10d9804c9c16633040dc
-      size: 10536
+      md5: a64699f84b863e903190bc21824ccc7d
+      size: 9784
     - path: eval_plots/plots/roc.json
-      md5: 4304f93a741e32b157349c808a7d6607
-      size: 59876
+      md5: 08f25a05e5b07789c3a14688b29f1d88
+      size: 61443
     - path: feat_imp.csv
-      md5: 6d60fea7749d9ce202f62d5efc19aae0
-      size: 300
+      md5: e40b3ebb216425c171a725801e74568c
+      size: 298
     - path: metrics.json
-      md5: d65842e4995509e4f16f639008aa2472
-      size: 65
+      md5: da94f18c3b39fd13247db334a8adbb34
+      size: 67
     - path: models/perm_imp.joblib
-      md5: 62a851421f0f632127f9aa919fa86f4b
-      size: 17316012
+      md5: baa55a109a39cfdc6a2f3f704d55903e
+      size: 517540
