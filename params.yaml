@@ -18,7 +18,7 @@ base:
   model_dir: .mlem/model
 
 data_split:
-  test_size: 0.25
+  test_size: 0.2
 
 train:
   model_type: randomforest
