@@ -11,7 +11,7 @@ The objective is to train a ML model that returns the probability of a customer 
 
 
 ## Installation
-Python 3.7+ is required to run code from this repo.
+Python 3.8+ is required to run code from this repo.
 ```bash
 $ git clone https://github.com/iterative/demo-bank-customer-churn
 $ cd demo-bank-customer-churn
@@ -28,20 +28,9 @@ $ pip install -r requirements.txt
 
 ## Running in your environment
 
-This DVC project comes with a preconfigured DVC 
-[remote storage](https://dvc.org/doc/command-reference/remote) that holds raw 
-data (input), intermediate, and final results that are produced. 
-This is a read-only HTTP remote.
-
-```bash
-$ dvc remote list
-storage https://remote.dvc.org/demo-bank-customer-churn
-```
-
-You can run dvc pull to download the data:
-```bash
-$ dvc pull
-```
+1. Create and configure a location for [remote storage](https://dvc.org/doc/command-reference/remote/add#supported-storage-types) (e.g. AWS S3) OR setup a local [DVC remote](https://dvc.org/doc/command-reference/remote#example-add-a-default-local-remote).
+Change the pointer to your DVC remote in `.dvc/config`.
+2. Download `Churn_Modeling.csv` file from [here](https://www.kaggle.com/datasets/santoshd3/bank-customers?select=Churn+Modeling.csv) and place it in `data/Churn_Modelling.csv`
 
 Now you can start a Jupyter Notebook server and execute the notebook `notebook/TrainChurnModel.ipynb` top to bottom to train a model
 
@@ -49,62 +38,8 @@ Now you can start a Jupyter Notebook server and execute the notebook `notebook/T
 $ jupyter notebook
 ```
 
-If you'd like to test commands like [`dvc push`](https://man.dvc.org/push), that require write access to the remote storage, the easiest way would be to set up a "local remote" on your file system:
-
-This kind of remote is located in the local file system, but is external to the DVC project.
+If you want to run the DVC pipeline:
 ```bash
-$ mkdir -p /tmp/dvc-storage
-$ dvc remote add local /tmp/dvc-storage
+dvc repro # runs the pipeline defined in `dvc.yaml`
+dvc push # pushes the resulting artifacts to a DVC remote configured in `.dvc/config`
 ```
-You should now be able to run:
-```bash
-$ dvc push -r local
-```
-
-## Running DVC pipeline
-
-Set `PYTHONPATH` to the project's path:
-```bash
-$ export PYTHONPATH=$PWD
-```
-Execute DVC pipeline
-```bash
-$ dvc repro
-```
-
-## Running web server with [MLEM](https://mlem.ai/)
-
-To start up FastAPI server run:
-```bash
-$ mlem serve clf fastapi
-⏳️ Loading model from .mlem/model/clf.mlem
-Starting fastapi server...
-💅 Adding route for /predict
-💅 Adding route for /predict_proba
-💅 Adding route for /sklearn_predict
-💅 Adding route for /sklearn_predict_proba
-Checkout openapi docs at <http://0.0.0.0:8080/docs>
-```
-
-To test the API:
-```bash
-curl -X 'POST' 'http://0.0.0.0:8080/predict_proba' -H 'accept: application/json' -H 'Content-Type: application/json' -d '{
-  "data": {
-    "values": [
-      {
-        "": 0,
-        "CreditScore": 619,
-        "Age": 42,
-        "Tenure": 2,
-        "Balance": 0,
-        "NumOfProducts": 1,
-        "HasCrCard": 1,
-        "IsActiveMember": 1,
-        "EstimatedSalary": 101348.88
-      }
-    ]
-  }
-}'
-[[0.8074799482954296,0.19252005170457026]]
-```
-
