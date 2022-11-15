@@ -28,7 +28,7 @@ stages:
           - EstimatedSalary
           targ_col: Exited
           random_state: 42
-          model_dir: .mlem/model
+          model_dir: model/
         data_split:
           test_size: 0.25
     outs:
@@ -54,8 +54,8 @@ stages:
       md5: c5e58ac55c3f8077ffac66b0e9b3536a
       size: 180622
     - path: stages/train.py
-      md5: 5b39947c77841799b2c970cd662dd6da
-      size: 2428
+      md5: d54e4eaf7ad9f7c5bb9a740d48a2f9d2
+      size: 2536
     params:
       params.yaml:
         base:
@@ -75,37 +75,37 @@ stages:
           - EstimatedSalary
           targ_col: Exited
           random_state: 42
-          model_dir: .mlem/model
+          model_dir: model/
         train:
           model_type: randomforest
           params:
             n_estimators: 150
             max_depth: 15
     outs:
-    - path: .mlem/model/clf-model
-      md5: 8751d511f81e2f91f06fd64c44484503
+    - path: model//clf-model
+      md5: 5961c355f79638a327665079bfa82a0d
       size: 16506539
-    - path: .mlem/model/clf-model.mlem
-      md5: 2df3bfd89dde1629fa04d125c5bc8bf5
-      size: 3252
+    - path: model//clf-model.mlem
+      md5: 7682887dbb3edfafae518493ba99e7ac
+      size: 3092
   eval:
     cmd: python stages/eval.py --config=params.yaml
     deps:
-    - path: .mlem/model/clf-model
-      md5: 8751d511f81e2f91f06fd64c44484503
-      size: 16506539
-    - path: .mlem/model/clf-model.mlem
-      md5: 2df3bfd89dde1629fa04d125c5bc8bf5
-      size: 3252
     - path: data/X_test.pkl
       md5: fcd1b7e28f320159a0eed658ee56ba97
       size: 186030
     - path: data/y_test.pkl
       md5: 7743d704b8b97cc303ceef12b9be6832
       size: 60613
+    - path: model//clf-model
+      md5: 5961c355f79638a327665079bfa82a0d
+      size: 16506539
+    - path: model//clf-model.mlem
+      md5: 7682887dbb3edfafae518493ba99e7ac
+      size: 3092
     - path: stages/eval.py
-      md5: 01cf10dab98aed930e7bc2eea7439b9d
-      size: 2692
+      md5: 0f8bd41fc66ef9117d6e3451a3ed3631
+      size: 2700
     params:
       params.yaml:
         base:
@@ -125,7 +125,7 @@ stages:
           - EstimatedSalary
           targ_col: Exited
           random_state: 42
-          model_dir: .mlem/model
+          model_dir: model/
         data_split:
           test_size: 0.25
         train:
@@ -135,9 +135,9 @@ stages:
             max_depth: 15
     outs:
     - path: eval_plots/cm.png
-      md5: c86fff702e890f6dbbf89adc6cfe3d3c
+      md5: c41202cd415f49704d5c35b51b79ed92
       size: 10231
-    - path: eval_plots/plots/roc.json
+    - path: eval_plots/plots/sklearn/roc.json
       md5: 2a0c382d788fddb082156a4db781b707
       size: 79220
     - path: feat_imp.csv
@@ -147,5 +147,5 @@ stages:
       md5: 096c20d40fcb880531a5997d423f0fe2
       size: 67
     - path: models/perm_imp.joblib
-      md5: 9d70de3ce43e487f6ffded0be02c2265
-      size: 16499964
+      md5: c8d91ccbd3886c38a53c001fd4f46889
+      size: 16505707

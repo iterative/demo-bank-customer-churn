@@ -19,6 +19,7 @@ from xgboost import XGBClassifier
 
 
 def train(data_dir,
+          model_dir,
           model_type,
           cat_cols,
           random_state,
@@ -57,7 +58,7 @@ def train(data_dir,
     model.fit(X_train, y_train)
     save(
         model,
-        "clf-model",
+        model_dir / "clf-model",
         sample_data=X_train
     )
 
@@ -68,12 +69,14 @@ if __name__ == '__main__':
     
     params = load_params(params_path=args.config)
     data_dir = Path(params.base.data_dir)
+    model_dir = Path(params.base.model_dir)
     random_state = params.base.random_state
     cat_cols = params.base.cat_cols
     num_cols = params.base.num_cols
     model_type = params.train.model_type
     train_params = params.train.params
     train(data_dir=data_dir,
+          model_dir=model_dir,
           model_type=model_type,
           cat_cols=cat_cols,
           random_state=random_state,
