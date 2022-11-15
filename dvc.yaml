@@ -47,7 +47,7 @@ stages:
     plots:
       - eval_plots/cm.png:
           cache: false
-      - eval_plots/plots/roc.json:
+      - eval_plots/plots/sklearn/roc.json:
           cache: false
           x: fpr
           y: tpr

@@ -15,7 +15,7 @@ base:
   - EstimatedSalary
   targ_col: Exited
   random_state: 42
-  model_dir: .mlem/model
+  model_dir: model/
 
 data_split:
   test_size: 0.25

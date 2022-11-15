@@ -1,8 +1,7 @@
 artifacts:
   data:
-    hash: 8751d511f81e2f91f06fd64c44484503
+    hash: 5961c355f79638a327665079bfa82a0d
     size: 16506539
-    type: dvc
     uri: clf-model
 model_type:
   methods:
@@ -154,17 +153,8 @@ model_type:
 object_type: model
 requirements:
 - module: numpy
-  version: 1.22.4
+  version: 1.23.4
 - module: pandas
-  version: 1.5.0
-- module: ruamel
+  version: 1.5.1
 - module: sklearn
-  version: 1.1.2
-- module: box
-  version: 6.0.1
-- module: scipy
-  version: 1.8.1
-- module: toml
-  version: 0.10.2
-- module: yaml
-  version: '6.0'
+  version: 1.1.3

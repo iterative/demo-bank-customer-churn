@@ -38,7 +38,7 @@ def eval(data_dir, model_dir, perm_imp_model_path, random_state):
     
     f1 = f1_score(y_test, y_pred)
     roc_auc = roc_auc_score(y_test, y_prob)
-    live.log_plot("roc", y_test, y_prob)
+    live.log_sklearn_plot("roc", y_test, y_prob)
     
     preprocessor = model.named_steps['preprocessor']
     clf = model.named_steps['clf']
