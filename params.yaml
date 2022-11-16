@@ -1,7 +1,7 @@
 base:
   project: bank_customer_churn
   data_dir: data
-  data_fname: Churn_Modelling.csv
+  data_fname: Churn_Modelling_0.csv
   cat_cols:
   - Geography
   num_cols:
@@ -25,6 +25,7 @@ train:
   params:
     n_estimators: 150
     max_depth: 15
+    warm_start: True
 
 eval:
   perm_imp_model_path: models/perm_imp.joblib
