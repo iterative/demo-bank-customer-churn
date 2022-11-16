@@ -1,6 +1,6 @@
 artifacts:
   data:
-    hash: 5961c355f79638a327665079bfa82a0d
+    hash: 5c5afc3e41a71c94a98cc07200765b8e
     size: 16506539
     uri: clf-model
 model_type:
@@ -153,7 +153,7 @@ model_type:
 object_type: model
 requirements:
 - module: numpy
-  version: 1.23.4
+  version: 1.22.4
 - module: pandas
   version: 1.5.1
 - module: sklearn

@@ -83,10 +83,10 @@ stages:
             max_depth: 15
     outs:
     - path: model//clf-model
-      md5: 5961c355f79638a327665079bfa82a0d
+      md5: 5c5afc3e41a71c94a98cc07200765b8e
       size: 16506539
     - path: model//clf-model.mlem
-      md5: 7682887dbb3edfafae518493ba99e7ac
+      md5: 5ad8006b615d3060986e4f82f8ae151f
       size: 3092
   eval:
     cmd: python stages/eval.py --config=params.yaml
@@ -98,10 +98,10 @@ stages:
       md5: 7743d704b8b97cc303ceef12b9be6832
       size: 60613
     - path: model//clf-model
-      md5: 5961c355f79638a327665079bfa82a0d
+      md5: 5c5afc3e41a71c94a98cc07200765b8e
       size: 16506539
     - path: model//clf-model.mlem
-      md5: 7682887dbb3edfafae518493ba99e7ac
+      md5: 5ad8006b615d3060986e4f82f8ae151f
       size: 3092
     - path: stages/eval.py
       md5: 0f8bd41fc66ef9117d6e3451a3ed3631
@@ -147,5 +147,5 @@ stages:
       md5: 096c20d40fcb880531a5997d423f0fe2
       size: 67
     - path: models/perm_imp.joblib
-      md5: c8d91ccbd3886c38a53c001fd4f46889
-      size: 16505707
+      md5: a1b06c62437c40cf9a58064b9ce69f54
+      size: 16499964
