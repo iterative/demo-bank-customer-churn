@@ -79,16 +79,16 @@ stages:
         train:
           model_type: randomforest
           params:
-            n_estimators: 15
+            n_estimators: 35
             max_depth: 5
             warm_start: true
     outs:
     - path: model//clf-model
-      md5: f10efb195513558a40c8f8a4f6bf3b07
-      size: 62279
+      md5: 0c5716d2a3fe167dcc07988bdf807cec
+      size: 143913
     - path: model//clf-model.mlem
-      md5: 3274fbbb52365f2c2aa73de438386709
-      size: 3089
+      md5: 8612ac4a8812c6de1b5883162a84f494
+      size: 3090
   eval:
     cmd: python stages/eval.py --config=params.yaml
     deps:
@@ -99,11 +99,11 @@ stages:
       md5: 745eb9da6d360516befe492af2787d41
       size: 30613
     - path: model//clf-model
-      md5: f10efb195513558a40c8f8a4f6bf3b07
-      size: 62279
+      md5: 0c5716d2a3fe167dcc07988bdf807cec
+      size: 143913
     - path: model//clf-model.mlem
-      md5: 3274fbbb52365f2c2aa73de438386709
-      size: 3089
+      md5: 8612ac4a8812c6de1b5883162a84f494
+      size: 3090
     - path: stages/eval.py
       md5: 0f8bd41fc66ef9117d6e3451a3ed3631
       size: 2700
@@ -132,22 +132,22 @@ stages:
         train:
           model_type: randomforest
           params:
-            n_estimators: 15
+            n_estimators: 35
             max_depth: 5
             warm_start: true
     outs:
     - path: eval_plots/cm.png
-      md5: cce3c36513d288e140713f25eb71dbd4
-      size: 10357
+      md5: b616ba6a799f49184011c6362b465908
+      size: 10374
     - path: eval_plots/plots/sklearn/roc.json
-      md5: 59a17a15de5128570d93181313fcae1f
-      size: 60254
+      md5: 624fc51062eaa42e61a4a8608425ced1
+      size: 52651
     - path: feat_imp.csv
-      md5: 529a0422a8fe2fad101f9106f15e4573
-      size: 308
+      md5: 0b0a7d4cdd8ccd4331070b82e6dde84c
+      size: 303
     - path: metrics.json
-      md5: 5631d12fa5cec7f13dd647424b82f0db
-      size: 67
+      md5: 5a9bfd1c08e09d38d43510fbdc173b6d
+      size: 65
     - path: models/perm_imp.joblib
-      md5: 55f35801aa3049c49ca16a0fdc527568
-      size: 63787
+      md5: 8e0901db0183a768d6a459c5e15b25c5
+      size: 145323
