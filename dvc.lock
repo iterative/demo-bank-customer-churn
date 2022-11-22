@@ -138,8 +138,8 @@ stages:
       30 -p max_depth 5 -p model_type random-forest
     deps:
     - path: TrainChurnModel.ipynb
-      md5: a70e139e23507d379682378afb632ff8
-      size: 29263
+      md5: ace31c5f54f66ee9a631e2d629c6ec0d
+      size: 29262
     - path: data/Churn_Modelling.csv
       md5: 73fba4fd85b6dbaf95c9d5e3836d3926
       size: 684860
@@ -172,14 +172,14 @@ stages:
             max_depth: 5
     outs:
     - path: eval_plots/cm.png
-      md5: df3cb10d004ed43ad32c8081241907ce
-      size: 7640
-    - path: eval_plots/plots/roc.json
+      md5: 9e1e597978e4c481620a1b0bfc64842a
+      size: 14305
+    - path: eval_plots/plots/sklearn/roc.json
       md5: df08093d9db5ac2c35c5dc8a3d4a5120
       size: 112390
     - path: metrics.json
       md5: 5def4f2f1a8da887a8df11f2978fd560
       size: 67
     - path: models/model.joblib
-      md5: 73e483f6a55f9845f119f989e04710fe
-      size: 117350
+      md5: 60b7c3aa4df0d3a9018f88cd7c65c3e5
+      size: 118601
