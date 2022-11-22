@@ -1,3 +1,9 @@
+anavo-model:
+  description: First version of the model
+  labels:
+  - detection
+  path: model/clf-model
+  type: model
 randomforest-model:
   description: Random forest classification model
   labels:
