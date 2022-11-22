@@ -1,7 +1,7 @@
 artifacts:
   data:
-    hash: 2c6b814c7a697314cd774af6300318ea
-    size: 9658331
+    hash: f10efb195513558a40c8f8a4f6bf3b07
+    size: 62279
     uri: clf-model
 model_type:
   methods:

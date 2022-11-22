@@ -23,6 +23,7 @@ def train(data_dir,
           model_type,
           cat_cols,
           random_state,
+          update_model:str=None,
           **train_params):
     X_train = pd.read_pickle(data_dir/'X_train.pkl')
     y_train = pd.read_pickle(data_dir/'y_train.pkl')
@@ -80,4 +81,5 @@ if __name__ == '__main__':
           model_type=model_type,
           cat_cols=cat_cols,
           random_state=random_state,
+          update_model="",
           **train_params)

@@ -23,8 +23,8 @@ data_split:
 train:
   model_type: randomforest
   params:
-    n_estimators: 150
-    max_depth: 15
+    n_estimators: 15
+    max_depth: 5
     warm_start: True
 
 eval:
