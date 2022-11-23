@@ -16,6 +16,9 @@ from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OrdinalEncoder, StandardScaler
 from utils.load_params import load_params
 from xgboost import XGBClassifier
+import gto
+import dvc.api
+import joblib
 
 
 def train(data_dir,
@@ -27,7 +30,7 @@ def train(data_dir,
           **train_params):
     X_train = pd.read_pickle(data_dir/'X_train.pkl')
     y_train = pd.read_pickle(data_dir/'y_train.pkl')
-    
+
     if model_type == "randomforest":
         clf = RandomForestClassifier(random_state=random_state, 
                                  **train_params)
@@ -52,9 +55,16 @@ def train(data_dir,
             ("cat", categorical_transformer, cat_cols),
         ]
     )
-    model = Pipeline(
-        steps=[("preprocessor", preprocessor), ("clf", clf)]
-        )
+    if update_model:
+        repo = "."
+        revision = gto.api.find_versions_in_stage(repo=repo, name=update_model, stage="prod")[0].ref
+        with dvc.api.open("model/clf-model", repo=repo, rev=revision, mode="rb") as f:
+            model = joblib.load(f)
+            model["clf"].n_estimators += (train_params.get("n_estimators") - model["clf"].n_estimators)
+    else:
+        model = Pipeline(
+            steps=[("preprocessor", preprocessor), ("clf", clf)]
+            )
     
     model.fit(X_train, y_train)
     save(
@@ -76,10 +86,11 @@ if __name__ == '__main__':
     num_cols = params.base.num_cols
     model_type = params.train.model_type
     train_params = params.train.params
+    update_model = params.train.update_model
     train(data_dir=data_dir,
           model_dir=model_dir,
           model_type=model_type,
           cat_cols=cat_cols,
           random_state=random_state,
-          update_model="",
+          update_model=update_model,
           **train_params)

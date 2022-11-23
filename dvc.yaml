@@ -51,3 +51,18 @@ stages:
           cache: false
           x: fpr
           y: tpr
+
+  compare:
+    cmd: python stages/compare.py --config=params.yaml
+    deps:
+      - stages/compare.py
+      - data/X_test.pkl
+      - data/y_test.pkl
+      - model/clf-model
+    params:
+      - base
+    metrics:
+      - comparison_metrics.json:
+          cache: false
+#    outs:
+#      - ${base.model_dir}/clf-model

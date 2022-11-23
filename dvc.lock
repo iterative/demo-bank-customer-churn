@@ -54,8 +54,8 @@ stages:
       md5: dbb125a59205f428a0b3e535efdfe83d
       size: 90598
     - path: stages/train.py
-      md5: fdba70be0ebe776f64141b547ad118f1
-      size: 2596
+      md5: 5f07d5209c52f77d2e474d539c59987f
+      size: 3076
     params:
       params.yaml:
         base:
@@ -78,16 +78,17 @@ stages:
           model_dir: model/
         train:
           model_type: randomforest
+          update_model: anavo-model
           params:
-            n_estimators: 35
+            n_estimators: 45
             max_depth: 5
             warm_start: true
     outs:
     - path: model//clf-model
-      md5: 0c5716d2a3fe167dcc07988bdf807cec
-      size: 143913
+      md5: 8067aa5cb8dff89825991f31e8c50d47
+      size: 183880
     - path: model//clf-model.mlem
-      md5: 8612ac4a8812c6de1b5883162a84f494
+      md5: 57ba2d7679a35dad485dcd4ddab65900
       size: 3090
   eval:
     cmd: python stages/eval.py --config=params.yaml
@@ -99,10 +100,10 @@ stages:
       md5: 745eb9da6d360516befe492af2787d41
       size: 30613
     - path: model//clf-model
-      md5: 0c5716d2a3fe167dcc07988bdf807cec
-      size: 143913
+      md5: 8067aa5cb8dff89825991f31e8c50d47
+      size: 183880
     - path: model//clf-model.mlem
-      md5: 8612ac4a8812c6de1b5883162a84f494
+      md5: 57ba2d7679a35dad485dcd4ddab65900
       size: 3090
     - path: stages/eval.py
       md5: 0f8bd41fc66ef9117d6e3451a3ed3631
@@ -131,23 +132,63 @@ stages:
           test_size: 0.25
         train:
           model_type: randomforest
+          update_model: anavo-model
           params:
-            n_estimators: 35
+            n_estimators: 45
             max_depth: 5
             warm_start: true
     outs:
     - path: eval_plots/cm.png
-      md5: b616ba6a799f49184011c6362b465908
-      size: 10374
+      md5: 55cc33f6631a0e1dab5edf072633dbf3
+      size: 10604
     - path: eval_plots/plots/sklearn/roc.json
-      md5: 624fc51062eaa42e61a4a8608425ced1
-      size: 52651
+      md5: 266b3a4e8edd52b0ec1bd639b7f65772
+      size: 45660
     - path: feat_imp.csv
-      md5: 0b0a7d4cdd8ccd4331070b82e6dde84c
-      size: 303
+      md5: 6c5315147f6ddba952a32b186d608e7b
+      size: 284
     - path: metrics.json
-      md5: 5a9bfd1c08e09d38d43510fbdc173b6d
+      md5: 0fb819bbc70099f2af6749a8ba1b57ff
       size: 65
     - path: models/perm_imp.joblib
-      md5: 8e0901db0183a768d6a459c5e15b25c5
-      size: 145323
+      md5: a6bb8ff5a5870717a6e5333d72cd3805
+      size: 185131
+  compare:
+    cmd: python stages/compare.py --config=params.yaml
+    deps:
+    - path: data/X_test.pkl
+      md5: fd3007d1a7bdff44ff89571ebedd519e
+      size: 93528
+    - path: data/y_test.pkl
+      md5: 745eb9da6d360516befe492af2787d41
+      size: 30613
+    - path: model/clf-model
+      md5: 8067aa5cb8dff89825991f31e8c50d47
+      size: 183880
+    - path: stages/compare.py
+      md5: 60d7413a5e2f45e1f9dbdf66365e32c8
+      size: 1634
+    params:
+      params.yaml:
+        base:
+          project: bank_customer_churn
+          data_dir: data
+          data_fname: Churn_Modelling_0.csv
+          cat_cols:
+          - Geography
+          num_cols:
+          - CreditScore
+          - Age
+          - Tenure
+          - Balance
+          - NumOfProducts
+          - HasCrCard
+          - IsActiveMember
+          - EstimatedSalary
+          targ_col: Exited
+          random_state: 42
+          model_dir: model/
+    outs:
+    - path: comparison_metrics.json
+      md5: 7f068baaf359d91a873052b2412e8cdf
+      size: 95
