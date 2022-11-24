@@ -24,9 +24,9 @@ jobs:
       # This block is using Iterative Sandbox AWS User
       # Comment it out if using your own credentials
       - uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-region: us-east-1
-          role-to-assume: arn:aws:iam::342840881361:role/SandboxUser
+          with:
+            aws_session_token: ${{ secrets.AWS_SESSION_TOKEN}}
+            aws-region: us-east-1
       - name: Setup Git User
         run: cml ci
         env:
@@ -47,5 +47,7 @@ jobs:
           echo "## Metrics" >> report.md
           dvc metrics show --md >> report.md
           echo "## Confusion Matrix" >> report.md
+          cml pr create .
+          gto register -m "update model" --bump-patch
           cml publish eval_plots/cm.png --md >> report.md
-          cml send-comment report.md
+          cml send-comment --update report.md
