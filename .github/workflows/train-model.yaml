@@ -24,9 +24,9 @@ jobs:
       # This block is using Iterative Sandbox AWS User
       # Comment it out if using your own credentials
       - uses: aws-actions/configure-aws-credentials@v1
-          with:
-            aws_session_token: ${{ secrets.AWS_SESSION_TOKEN}}
-            aws-region: us-east-1
+        with:
+          aws_session_token: ${{ secrets.AWS_SESSION_TOKEN}}
+          aws-region: us-east-1
       - name: Setup Git User
         run: cml ci
         env:
