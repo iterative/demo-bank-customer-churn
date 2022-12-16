@@ -23,7 +23,7 @@ data_split:
 train:
   model_type: randomforest
   params:
-    n_estimators: 150
+    n_estimators: 200
     max_depth: 20
 
 eval:
