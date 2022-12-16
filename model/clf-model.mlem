@@ -1,82 +1,11 @@
 artifacts:
   data:
-    hash: 5c5afc3e41a71c94a98cc07200765b8e
-    size: 16506539
+    hash: c8a06d11eee4053037d215f4fe6b7ae5
+    size: 20931746
     uri: clf-model
 model_type:
   methods:
     predict:
-      args:
-      - name: data
-        type_:
-          columns:
-          - ''
-          - Geography
-          - CreditScore
-          - Age
-          - Tenure
-          - Balance
-          - NumOfProducts
-          - HasCrCard
-          - IsActiveMember
-          - EstimatedSalary
-          dtypes:
-          - int64
-          - object
-          - int64
-          - int64
-          - int64
-          - float64
-          - int64
-          - int64
-          - int64
-          - float64
-          index_cols:
-          - ''
-          type: dataframe
-      name: predict
-      returns:
-        dtype: int64
-        shape:
-        - null
-        type: ndarray
-    predict_proba:
-      args:
-      - name: data
-        type_:
-          columns:
-          - ''
-          - Geography
-          - CreditScore
-          - Age
-          - Tenure
-          - Balance
-          - NumOfProducts
-          - HasCrCard
-          - IsActiveMember
-          - EstimatedSalary
-          dtypes:
-          - int64
-          - object
-          - int64
-          - int64
-          - int64
-          - float64
-          - int64
-          - int64
-          - int64
-          - float64
-          index_cols:
-          - ''
-          type: dataframe
-      name: predict_proba
-      returns:
-        dtype: float64
-        shape:
-        - null
-        - 2
-        type: ndarray
-    sklearn_predict:
       args:
       - name: X
         type_:
@@ -112,7 +41,7 @@ model_type:
         - null
         type: ndarray
       varkw: predict_params
-    sklearn_predict_proba:
+    predict_proba:
       args:
       - name: X
         type_:
@@ -153,8 +82,8 @@ model_type:
 object_type: model
 requirements:
 - module: numpy
-  version: 1.22.4
+  version: 1.23.5
 - module: pandas
-  version: 1.5.1
+  version: 1.5.2
 - module: sklearn
-  version: 1.1.3
+  version: 1.2.0

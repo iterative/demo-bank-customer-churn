@@ -80,14 +80,14 @@ stages:
           model_type: randomforest
           params:
             n_estimators: 150
-            max_depth: 15
+            max_depth: 20
     outs:
     - path: model//clf-model
-      md5: 5c5afc3e41a71c94a98cc07200765b8e
-      size: 16506539
+      md5: c8a06d11eee4053037d215f4fe6b7ae5
+      size: 20931746
     - path: model//clf-model.mlem
-      md5: 5ad8006b615d3060986e4f82f8ae151f
-      size: 3092
+      md5: c93486baeb8ab115c8116cc733bc5bbe
+      size: 1708
   eval:
     cmd: python stages/eval.py --config=params.yaml
     deps:
@@ -98,11 +98,11 @@ stages:
       md5: 7743d704b8b97cc303ceef12b9be6832
       size: 60613
     - path: model//clf-model
-      md5: 5c5afc3e41a71c94a98cc07200765b8e
-      size: 16506539
+      md5: c8a06d11eee4053037d215f4fe6b7ae5
+      size: 20931746
     - path: model//clf-model.mlem
-      md5: 5ad8006b615d3060986e4f82f8ae151f
-      size: 3092
+      md5: c93486baeb8ab115c8116cc733bc5bbe
+      size: 1708
     - path: stages/eval.py
       md5: 0f8bd41fc66ef9117d6e3451a3ed3631
       size: 2700
@@ -132,20 +132,20 @@ stages:
           model_type: randomforest
           params:
             n_estimators: 150
-            max_depth: 15
+            max_depth: 20
     outs:
     - path: eval_plots/cm.png
-      md5: c41202cd415f49704d5c35b51b79ed92
-      size: 10231
+      md5: e56a750802e2954202029054d2f625bd
+      size: 10413
     - path: eval_plots/plots/sklearn/roc.json
-      md5: 2a0c382d788fddb082156a4db781b707
-      size: 79220
+      md5: f09252db150e39ed71ea13ab914362cf
+      size: 86311
     - path: feat_imp.csv
-      md5: cbf7ad5a2bbffe802927b560f317d913
-      size: 297
+      md5: 0877a48b2e2935cb7f596d30137a4e2c
+      size: 299
     - path: metrics.json
-      md5: 096c20d40fcb880531a5997d423f0fe2
+      md5: 36658c4136489292fd5e086f04a2f1cb
       size: 67
     - path: models/perm_imp.joblib
-      md5: a1b06c62437c40cf9a58064b9ce69f54
-      size: 16499964
+      md5: 64ec49282ee1bea38d577c92914b03be
+      size: 20930427
