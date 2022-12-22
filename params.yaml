@@ -18,7 +18,7 @@ base:
   model_dir: model/
 
 data_split:
-  test_size: 0.25
+  test_size: 0.15
 
 train:
   model_type: randomforest
