@@ -3,83 +3,91 @@ artifacts:
     hash: c8a06d11eee4053037d215f4fe6b7ae5
     size: 20931746
     uri: clf-model
-model_type:
-  methods:
-    predict:
-      args:
-      - name: X
-        type_:
-          columns:
-          - ''
-          - Geography
-          - CreditScore
-          - Age
-          - Tenure
-          - Balance
-          - NumOfProducts
-          - HasCrCard
-          - IsActiveMember
-          - EstimatedSalary
-          dtypes:
-          - int64
-          - object
-          - int64
-          - int64
-          - int64
-          - float64
-          - int64
-          - int64
-          - int64
-          - float64
-          index_cols:
-          - ''
-          type: dataframe
-      name: predict
-      returns:
-        dtype: int64
-        shape:
-        - null
-        type: ndarray
-      varkw: predict_params
-    predict_proba:
-      args:
-      - name: X
-        type_:
-          columns:
-          - ''
-          - Geography
-          - CreditScore
-          - Age
-          - Tenure
-          - Balance
-          - NumOfProducts
-          - HasCrCard
-          - IsActiveMember
-          - EstimatedSalary
-          dtypes:
-          - int64
-          - object
-          - int64
-          - int64
-          - int64
-          - float64
-          - int64
-          - int64
-          - int64
-          - float64
-          index_cols:
-          - ''
-          type: dataframe
-      name: predict_proba
-      returns:
-        dtype: float64
-        shape:
-        - null
-        - 2
-        type: ndarray
-      varkw: predict_proba_params
-  type: sklearn_pipeline
+call_orders:
+  predict:
+  - - model
+    - predict
+  predict_proba:
+  - - model
+    - predict_proba
 object_type: model
+processors:
+  model:
+    methods:
+      predict:
+        args:
+        - name: X
+          type_:
+            columns:
+            - ''
+            - Geography
+            - CreditScore
+            - Age
+            - Tenure
+            - Balance
+            - NumOfProducts
+            - HasCrCard
+            - IsActiveMember
+            - EstimatedSalary
+            dtypes:
+            - int64
+            - object
+            - int64
+            - int64
+            - int64
+            - float64
+            - int64
+            - int64
+            - int64
+            - float64
+            index_cols:
+            - ''
+            type: dataframe
+        name: predict
+        returns:
+          dtype: int64
+          shape:
+          - null
+          type: ndarray
+        varkw: predict_params
+      predict_proba:
+        args:
+        - name: X
+          type_:
+            columns:
+            - ''
+            - Geography
+            - CreditScore
+            - Age
+            - Tenure
+            - Balance
+            - NumOfProducts
+            - HasCrCard
+            - IsActiveMember
+            - EstimatedSalary
+            dtypes:
+            - int64
+            - object
+            - int64
+            - int64
+            - int64
+            - float64
+            - int64
+            - int64
+            - int64
+            - float64
+            index_cols:
+            - ''
+            type: dataframe
+        name: predict_proba
+        returns:
+          dtype: float64
+          shape:
+          - null
+          - 2
+          type: ndarray
+        varkw: predict_proba_params
+    type: sklearn_pipeline
 requirements:
 - module: numpy
   version: 1.23.5
