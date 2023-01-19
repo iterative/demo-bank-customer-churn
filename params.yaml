@@ -21,7 +21,7 @@ data_split:
   test_size: 0.25
 
 train:
-  model_type: randomforest
+  model_type: lightgbm
   params:
     n_estimators: 150
     max_depth: 20
