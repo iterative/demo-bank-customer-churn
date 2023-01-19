@@ -77,17 +77,17 @@ stages:
           random_state: 42
           model_dir: model/
         train:
-          model_type: randomforest
+          model_type: lightgbm
           params:
             n_estimators: 150
             max_depth: 20
     outs:
     - path: model//clf-model
-      md5: c8a06d11eee4053037d215f4fe6b7ae5
-      size: 20931746
+      md5: a2e6cb47ecc818790ff01d057d7b2b29
+      size: 516280
     - path: model//clf-model.mlem
-      md5: c93486baeb8ab115c8116cc733bc5bbe
-      size: 1708
+      md5: 037d0f4f848d006d1b87afb0f896dc08
+      size: 2067
   eval:
     cmd: python stages/eval.py --config=params.yaml
     deps:
@@ -98,11 +98,11 @@ stages:
       md5: 7743d704b8b97cc303ceef12b9be6832
       size: 60613
     - path: model//clf-model
-      md5: c8a06d11eee4053037d215f4fe6b7ae5
-      size: 20931746
+      md5: a2e6cb47ecc818790ff01d057d7b2b29
+      size: 516280
     - path: model//clf-model.mlem
-      md5: c93486baeb8ab115c8116cc733bc5bbe
-      size: 1708
+      md5: 037d0f4f848d006d1b87afb0f896dc08
+      size: 2067
     - path: stages/eval.py
       md5: 0f8bd41fc66ef9117d6e3451a3ed3631
       size: 2700
@@ -129,23 +129,23 @@ stages:
         data_split:
           test_size: 0.25
         train:
-          model_type: randomforest
+          model_type: lightgbm
           params:
             n_estimators: 150
             max_depth: 20
     outs:
     - path: eval_plots/cm.png
-      md5: e56a750802e2954202029054d2f625bd
-      size: 10413
+      md5: e2f9b257991357b3c01d18d70f119017
+      size: 10265
     - path: eval_plots/plots/sklearn/roc.json
-      md5: f09252db150e39ed71ea13ab914362cf
-      size: 86311
+      md5: d338ba45632dc3646ac76c97c3bbd819
+      size: 75309
     - path: feat_imp.csv
-      md5: 0877a48b2e2935cb7f596d30137a4e2c
-      size: 299
+      md5: 22e0b073262d07e2b2448914408a2680
+      size: 295
     - path: metrics.json
-      md5: 36658c4136489292fd5e086f04a2f1cb
+      md5: 9f27616857449e275f7fdbd3f73ff3cb
       size: 67
     - path: models/perm_imp.joblib
-      md5: 64ec49282ee1bea38d577c92914b03be
-      size: 20930427
+      md5: 4c7077b5b5140c59b655000b60b4ecc2
+      size: 517819
