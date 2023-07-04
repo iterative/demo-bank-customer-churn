@@ -52,8 +52,6 @@ stages:
           x: fpr
           y: tpr
 artifacts:
-  labels:
-  - classification
-  - churn
-  path: model/clf-model
-  type: model
+  churn:
+    type: model
+    path: model/clf-model
