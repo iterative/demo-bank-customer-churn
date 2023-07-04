@@ -1,57 +1,63 @@
 stages:
-  data_split: 
+  data_split:
     cmd: python stages/data_split.py --config=params.yaml
     deps:
-      - stages/data_split.py
-      - ${base.data_dir}/${base.data_fname}
+    - stages/data_split.py
+    - ${base.data_dir}/${base.data_fname}
     params:
-      - base
-      - data_split
+    - base
+    - data_split
     outs:
-      - data/X_train.pkl
-      - data/X_test.pkl
-      - data/y_train.pkl
-      - data/y_test.pkl
+    - data/X_train.pkl
+    - data/X_test.pkl
+    - data/y_train.pkl
+    - data/y_test.pkl
   train:
     cmd: python stages/train.py --config=params.yaml
     deps:
-      - stages/train.py
-      - data/X_train.pkl
-      - data/y_train.pkl
+    - stages/train.py
+    - data/X_train.pkl
+    - data/y_train.pkl
     params:
-      - base
-      - train
+    - base
+    - train
     outs:
-      - ${base.model_dir}/clf-model
-      - ${base.model_dir}/clf-model.mlem:
-          cache: false
+    - ${base.model_dir}/clf-model
+    - ${base.model_dir}/clf-model.mlem:
+        cache: false
   eval:
     cmd: python stages/eval.py --config=params.yaml
     deps:
-      - stages/eval.py
-      - data/X_test.pkl
-      - data/y_test.pkl
-      - ${base.model_dir}/clf-model
-      - ${base.model_dir}/clf-model.mlem
+    - stages/eval.py
+    - data/X_test.pkl
+    - data/y_test.pkl
+    - ${base.model_dir}/clf-model
+    - ${base.model_dir}/clf-model.mlem
     params:
-      - base
-      - data_split
-      - train
+    - base
+    - data_split
+    - train
     outs:
-      - ${eval.perm_imp_model_path}
-      - feat_imp.csv:
-          cache: false
+    - ${eval.perm_imp_model_path}
+    - feat_imp.csv:
+        cache: false
     metrics:
-      - metrics.json:
-          cache: false
+    - metrics.json:
+        cache: false
     plots:
-      - eval_plots/cm.png:
-          cache: false
-      - eval_plots/plots/sklearn/roc.json:
-          cache: false
-          x: fpr
-          y: tpr
+    - eval_plots/cm.png:
+        cache: false
+    - eval_plots/plots/sklearn/roc.json:
+        cache: false
+        x: fpr
+        y: tpr
 artifacts:
   churn:
     type: model
     path: model/clf-model
+  clf-model:
+    path: model/clf-model
+    type: model
+    labels:
+    - label1
+    - label2
