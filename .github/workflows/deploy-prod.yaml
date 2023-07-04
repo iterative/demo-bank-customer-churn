@@ -33,5 +33,5 @@ jobs:
           HEROKU_API_KEY: ${{secrets.HEROKU_API_KEY}}
         run: |
           pip install -r requirements.txt
-          dvc pull .mlem/model/clf-model
+          dvc pull model/clf-model
           mlem deployment run api-customer-churn-prod
