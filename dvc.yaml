@@ -51,9 +51,9 @@ stages:
           cache: false
           x: fpr
           y: tpr
-    artifacts:
-      labels:
-      - classification
-      - churn
-      path: model/clf-model
-      type: model
+artifacts:
+  labels:
+  - classification
+  - churn
+  path: model/clf-model
+  type: model
