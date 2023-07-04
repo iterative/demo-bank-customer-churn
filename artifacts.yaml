@@ -1,7 +1,0 @@
-randomforest-model:
-  description: Random forest classification model
-  labels:
-  - classification
-  - churn
-  path: .mlem/model/clf-model
-  type: model
