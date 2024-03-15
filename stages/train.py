@@ -21,6 +21,7 @@ from xgboost import XGBClassifier
 def train(data_dir,
           model_dir,
           model_type,
+          num_cols,
           cat_cols,
           random_state,
           **train_params):
@@ -78,6 +79,7 @@ if __name__ == '__main__':
     train(data_dir=data_dir,
           model_dir=model_dir,
           model_type=model_type,
+          num_cols=num_cols,
           cat_cols=cat_cols,
           random_state=random_state,
           **train_params)
