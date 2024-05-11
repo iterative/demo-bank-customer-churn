@@ -43,9 +43,10 @@ jobs:
           dvc pull
           dvc repro
           dvc push
+          cml pr --squash --skip-ci .
           # Create CML report
           echo "## Metrics" >> report.md
           dvc metrics show --md >> report.md
           echo "## Confusion Matrix" >> report.md
-          cml publish eval_plots/cm.png --md >> report.md
-          cml send-comment report.md
+          echo '![](./eval_plots/cm.png "Confusion Matrix")' >> report.md
+          cml comment create --pr --publish report.md
